@@ -25,11 +25,11 @@ export default {
         n: {
           1: "#FFFFFF",
           2: "#CAC6DD",
-          3: "#ADA8C3",
+          3: "#444D56",
           4: "#757185",
           5: "#3F3A52",
           6: "#252134",
-          7: "#15131D",
+          7: "#161B22",
           8: "#0D1117",
           9: "#474060",
           10: "#43435C",
@@ -96,17 +96,18 @@ export default {
             {},
         },
         ".h2": {
-          "@apply text-[1.75rem] leading-[2.5rem] md:text-[2rem] md:leading-[2.5rem] lg:text-[2.5rem] lg:leading-[3.5rem] xl:text-[3rem] xl:leading-tight":
+          "@apply font-semibold text-[1.75rem] leading-[2.5rem] md:text-[2rem] md:leading-[2.5rem] lg:text-[2.5rem] lg:leading-[3.5rem] xl:text-[3rem] xl:leading-tight":
             {},
         },
         ".h3": {
-          "@apply text-[2rem] leading-normal md:text-[2.5rem]": {},
+          "@apply font-semibold text-[2rem] leading-normal md:text-[2.5rem]":
+            {},
         },
         ".h4": {
-          "@apply text-[2rem] leading-normal": {},
+          "@apply font-semibold text-[2rem] leading-normal": {},
         },
         ".h5": {
-          "@apply text-xl leading-normal": {},
+          "@apply font-semibold text-xl leading-normal": {},
         },
         ".h6": {
           "@apply font-semibold text-lg leading-8": {},

@@ -1,8 +1,24 @@
 import React from "react";
 
+const TimelineItem = ({ className, title, position, time }) => {
+  return (
+    <div
+      className={`bg-n-3 rounded-[2.5rem] h-[5rem] px-7 flex justify-between items-center ${className}`}
+    >
+      <div>
+        <p className="font-bold text-lg">{title}</p>
+        <p>{position}</p>
+      </div>
+      <div>
+        <p className="font-bold text-lg">{time}</p>
+      </div>
+    </div>
+  );
+};
+
 const About = () => {
   return (
-    <div className="container">
+    <div className="container h-full py-12">
       <div className="flex flex-col lg:flex-row">
         <div>
           <h2 className="h1 font-black">
@@ -32,14 +48,46 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div class="grid grid-cols-4 gap-4">
-        <div>01</div>
-        <div>02</div>
-        <div>03</div>
-        <div>04</div>
-        <div>05</div>
-        <div class="grid grid-cols-subgrid gap-4 col-span-3 border-red-600 border-2">
-          <div class="col-start-1">06</div>
+      <div class="space-y-6 md:space-y-0 md:grid grid-cols-6 gap-y-6 py-[8rem]">
+        <TimelineItem
+          title={"Epiq"}
+          position={"Operations Analyst"}
+          time={"2021 - Present"}
+          className={"col-start-4 col-span-3"}
+        />
+        <TimelineItem
+          title={"Freelance"}
+          position={"Graphic Designer / Web and App Developer"}
+          time={"2019 - Present"}
+          className={"row-start-2 col-start-3 col-span-4"}
+        />
+        <TimelineItem
+          title={"Project Insediamento"}
+          position={"Graphic Designer"}
+          time={"2017 - 2019"}
+          className={"row-start-3 col-span-2"}
+        />
+      </div>
+      <div className="grid gap-8">
+        <div className="col-span-2 grid py-8 px-12 bg-n-7 rounded-[2.5rem] content-center">
+          <div className="col-span-2">
+            <h4 className="h4">Tech and Framework</h4>
+          </div>
+          <div className="h-[6rem] justify-items-center content-center">
+            Web
+          </div>
+          <div className="row-span-2 justify-items-center content-center">
+            Other
+          </div>
+          <div className="h-[6rem] justify-items-center content-center">
+            Mobile
+          </div>
+        </div>
+        <div className="py-8 px-12 bg-n-7 rounded-[2.5rem] content-center">
+          2
+        </div>
+        <div className="py-8 px-12 bg-n-7 rounded-[2.5rem] content-center">
+          3
         </div>
       </div>
     </div>

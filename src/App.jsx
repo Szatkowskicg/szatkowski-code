@@ -6,7 +6,7 @@ import About from "./components/About";
 const App = () => {
   return (
     <>
-      <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden flex h-dvh justify-center items-center">
+      <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden flex h-dvh justify-center items-center overflow-y-auto box-border">
         <Header />
         <About />
 

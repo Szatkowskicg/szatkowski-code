@@ -3,7 +3,9 @@ import { logo } from "../assets";
 import { navigation } from "../constants";
 import { HamburgerMenu } from "./design/Header";
 import { useState } from "react";
+import { disablePageScroll, enablePageScroll } from "scroll-lock";
 import MenuSvg from "../assets/svg/MenuSvg";
+import { motion } from "motion/react";
 
 const Header = () => {
   const pathname = useLocation();
@@ -12,23 +14,31 @@ const Header = () => {
   const toggleNav = () => {
     if (openNavigation) {
       setOpenNavigation(false);
+      enablePageScroll();
     } else {
       setOpenNavigation(true);
+      disablePageScroll();
     }
   };
 
   const handleClick = () => {
     if (!openNavigation) return;
 
+    enablePageScroll();
     setOpenNavigation(false);
   };
 
   return (
-    <div className={`fixed top-0 left-0 w-full z-50`}>
+    <div className={`relative top-0 left-0 w-full z-50`}>
       <div className="flex items-center px-5 py-5 lg:px-7.5 xl:px-10 max-lg:py-4">
-        <a className="block w-[10rem] xl:mr-8" href="#hero">
+        <motion.a
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          className="block w-[10rem] xl:mr-8"
+          href="#hero"
+        >
           <img src={logo} width={150} height={40} alt="Szatkowski Code" />
-        </a>
+        </motion.a>
 
         <nav
           className={`${

@@ -16,6 +16,7 @@ import {
   javascript,
 } from "../assets";
 import { motion } from "motion/react";
+import Reveal from "./Reveal";
 
 const TimelineItem = ({ className, title, position, time }) => {
   return (
@@ -77,13 +78,17 @@ const About = () => {
       <div className="container">
         <div className="flex flex-col lg:flex-row">
           <div>
-            <motion.h2 animate={{}} className="h1 font-black">
-              Paweł <br />
-              Szatkowski
-            </motion.h2>
-            <h5 className="h5 font-medium">Front-End Developer</h5>
+            <Reveal>
+              <h2 animate={{}} className="h1 font-black">
+                Paweł <br />
+                Szatkowski
+              </h2>
+            </Reveal>
+            <Reveal>
+              <h5 className="h5 font-medium">Front-End Developer</h5>
+            </Reveal>
           </div>
-          <span></span>
+
           <div className="lg:pl-[8rem] space-y-9">
             <h4 className="h2">
               Driven to create refined, inclusive digital experiences that are

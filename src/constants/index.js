@@ -2,19 +2,19 @@ export const navigation = [
   {
     id: "0",
     title: "O mnie",
-    url: "#about",
+    url: "/about",
     class: "bg-color-1",
   },
   {
     id: "1",
     title: "Portfolio",
-    url: "#portfolio",
+    url: "/portfolio",
     class: "bg-color-2",
   },
   {
     id: "2",
     title: "Kontakt",
-    url: "#contact",
+    url: "/contact",
     class: "bg-color-3",
   },
 ];

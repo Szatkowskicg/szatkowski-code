@@ -20,7 +20,7 @@ import Reveal from "./Reveal";
 
 const TimelineItem = ({ className, title, position, time }) => {
   return (
-    <div
+    <Reveal
       className={`bg-n-3 rounded-[2.5rem] h-[5rem] px-7 flex justify-between items-center ${className}`}
     >
       <div>
@@ -30,7 +30,7 @@ const TimelineItem = ({ className, title, position, time }) => {
       <div>
         <p className="font-bold text-lg min-w-0">{time}</p>
       </div>
-    </div>
+    </Reveal>
   );
 };
 
@@ -70,7 +70,7 @@ const SkillIconItem = ({ icon, title }) => {
 
 const About = () => {
   return (
-    <motion.div
+    <div
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       className="relative h-full pt-[10rem] pb-[5rem] overflow-y-auto box-border"
@@ -90,25 +90,33 @@ const About = () => {
           </div>
 
           <div className="lg:pl-[8rem] space-y-9">
-            <h4 className="h2">
-              Driven to create refined, inclusive digital experiences that are
-              both visually precise and user-centered.
-            </h4>
+            <Reveal delay={0.35}>
+              <h4 className="h2">
+                Driven to create refined, inclusive digital experiences that are
+                both visually precise and user-centered.
+              </h4>
+            </Reveal>
             <div className="h6 space-y-8">
-              <p>
-                I have gained valuable experience working on freelance projects,
-                where each assignment allows me to blend creativity with
-                technology to deliver intuitive and user-friendly solutions.
-              </p>
-              <p>
-                Currently, I also work as a data analyst, which lets me combine
-                analytical thinking with my development skills. This background
-                enables me to create projects that are not only visually
-                appealing but also functional and user-centered.
-              </p>
+              <Reveal delay={0.45}>
+                <p>
+                  I have gained valuable experience working on freelance
+                  projects, where each assignment allows me to blend creativity
+                  with technology to deliver intuitive and user-friendly
+                  solutions.
+                </p>
+              </Reveal>
+              <Reveal delay={0.55}>
+                <p>
+                  Currently, I also work as a data analyst, which lets me
+                  combine analytical thinking with my development skills. This
+                  background enables me to create projects that are not only
+                  visually appealing but also functional and user-centered.
+                </p>
+              </Reveal>
             </div>
           </div>
         </div>
+
         <div class="space-y-4 md:space-y-0 md:grid grid-cols-6 gap-y-6 py-[8rem]">
           <TimelineItem
             title={"Epiq"}
@@ -129,11 +137,13 @@ const About = () => {
             className={"row-start-3 col-span-2"}
           />
         </div>
+
         <div className="grid gap-8 grid-cols-2">
           <div className="col-span-2 max-md:space-y-6 md:grid md:grid-cols-2 gap-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[2.5rem] content-center">
             <div className="col-span-2">
               <h4 className="h4">Technology and Frameworks</h4>
             </div>
+
             <div className="">
               <p className="text-n-3 font-semibold">Web</p>
               <div className="space-y-4 py-4 lg:px-8 xl:px-16">
@@ -149,6 +159,7 @@ const About = () => {
                 />
               </div>
             </div>
+
             <div className="">
               <p className="text-n-3 font-semibold">Mobile</p>
               <div className="space-y-4 py-4 lg:px-8 xl:px-16">
@@ -159,6 +170,7 @@ const About = () => {
                 />
               </div>
             </div>
+
             <div className="md:col-start-2 md:row-start-2 md:row-span-2 space-y-4">
               <p className="text-n-3 font-semibold">Other</p>
               <div className="flex justify-center items-center">
@@ -175,6 +187,7 @@ const About = () => {
               </div>
             </div>
           </div>
+
           <div className="col-span-2 lg:col-span-1 space-y-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[2.5rem] content-center">
             <h4 className="h4">Languages</h4>
             <div className="space-y-4 lg:px-8 xl:px-16">
@@ -189,7 +202,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

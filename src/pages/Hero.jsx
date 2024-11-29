@@ -42,11 +42,38 @@ const Hero = () => {
             i potrzeb użytkownika.
           </h5>
         </motion.div>
-        <div className="flex justify-center pt-4">
+
+        <motion.div
+          className="flex justify-center pt-10"
+          variants={{
+            hidden: {
+              opacity: 0,
+              scale: 1,
+              y: -70,
+            },
+            visible: {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+            },
+          }}
+          initial="hidden"
+          animate="visible"
+          transition={{
+            ease: "easeOut",
+            duration: 0.25,
+            delay: 0.75,
+          }}
+          exit={{
+            opacity: 0,
+            x: -30,
+            transition: { ease: "easeIn", duration: 0.3 },
+          }}
+        >
           <Link to={{ pathname: "/about" }}>
             <Button className={"text-xl"}>Przejdź dalej</Button>
           </Link>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

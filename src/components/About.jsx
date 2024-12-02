@@ -139,11 +139,10 @@ const About = () => {
         </div>
 
         <div className="grid gap-8 grid-cols-2">
-          <div className="col-span-2 max-md:space-y-6 md:grid md:grid-cols-2 gap-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[2.5rem] content-center">
+          <Reveal className="col-span-2 max-md:space-y-6 md:grid md:grid-cols-2 gap-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[2.5rem] content-center">
             <div className="col-span-2">
               <h4 className="h4">Technology and Frameworks</h4>
             </div>
-
             <div className="">
               <p className="text-n-3 font-semibold">Web</p>
               <div className="space-y-4 py-4 lg:px-8 xl:px-16">
@@ -159,7 +158,6 @@ const About = () => {
                 />
               </div>
             </div>
-
             <div className="">
               <p className="text-n-3 font-semibold">Mobile</p>
               <div className="space-y-4 py-4 lg:px-8 xl:px-16">
@@ -170,7 +168,6 @@ const About = () => {
                 />
               </div>
             </div>
-
             <div className="md:col-start-2 md:row-start-2 md:row-span-2 space-y-4">
               <p className="text-n-3 font-semibold">Other</p>
               <div className="flex justify-center items-center">
@@ -186,20 +183,24 @@ const About = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="col-span-2 lg:col-span-1 space-y-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[2.5rem] content-center">
+          <Reveal className="col-span-2 lg:col-span-1 space-y-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[2.5rem] content-center">
             <h4 className="h4">Languages</h4>
             <div className="space-y-4 lg:px-8 xl:px-16">
               <SkillProgressItem title={"JS"} icon={javascript} progress={5} />
               <SkillProgressItem title={"HTML"} icon={html} progress={8} />
               <SkillProgressItem title={"CSS"} icon={css} progress={8} />
             </div>
-          </div>
-          <div className="col-span-2 lg:col-span-1 space-y-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[2.5rem] content-center ">
+          </Reveal>
+
+          <Reveal
+            delay={0.5}
+            className="col-span-2 lg:col-span-1 space-y-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[2.5rem] content-center "
+          >
             <h4 className="h4">Portfolio</h4>
             <div></div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </div>

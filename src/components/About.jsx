@@ -17,6 +17,7 @@ import {
 } from "../assets";
 import { motion } from "motion/react";
 import Reveal from "./Reveal";
+import SequentialAnimations from "./SequentialAnimarions";
 
 const TimelineItem = ({ className, title, position, time }) => {
   return (
@@ -70,52 +71,37 @@ const SkillIconItem = ({ icon, title }) => {
 
 const About = () => {
   return (
-    <div
-      initial={{ y: 20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      className="relative h-full pt-[10rem] pb-[5rem] overflow-y-auto box-border"
-    >
+    <div className="relative h-full pt-[10rem] pb-[5rem] overflow-y-auto box-border">
       <div className="container">
-        <div className="flex flex-col lg:flex-row">
-          <div>
-            <Reveal>
-              <h2 animate={{}} className="h1 font-black">
-                Paweł <br />
-                Szatkowski
-              </h2>
-            </Reveal>
-            <Reveal>
-              <h5 className="h5 font-medium">Front-End Developer</h5>
-            </Reveal>
-          </div>
+        <Reveal className="flex flex-col lg:flex-row max-lg:space-y-8">
+          <SequentialAnimations>
+            <h2 className="h1 font-black">
+              Paweł <br />
+              Szatkowski
+            </h2>
+            <h5 className="h5 font-medium">Front-End Developer</h5>
+          </SequentialAnimations>
 
-          <div className="lg:pl-[8rem] space-y-9">
-            <Reveal delay={0.35}>
-              <h4 className="h2">
-                Driven to create refined, inclusive digital experiences that are
-                both visually precise and user-centered.
-              </h4>
-            </Reveal>
-            <div className="h6 space-y-8">
-              <Reveal delay={0.45}>
-                <p>
-                  I have gained valuable experience working on freelance
-                  projects, where each assignment allows me to blend creativity
-                  with technology to deliver intuitive and user-friendly
-                  solutions.
-                </p>
-              </Reveal>
-              <Reveal delay={0.55}>
-                <p>
-                  Currently, I also work as a data analyst, which lets me
-                  combine analytical thinking with my development skills. This
-                  background enables me to create projects that are not only
-                  visually appealing but also functional and user-centered.
-                </p>
-              </Reveal>
-            </div>
-          </div>
-        </div>
+          <SequentialAnimations className="lg:pl-[8rem] space-y-8" delay={0.8}>
+            <h4 className="h2">
+              Driven to create refined, inclusive digital experiences that are
+              both visually precise and user-centered.
+            </h4>
+
+            <p className="h6">
+              I have gained valuable experience working on freelance projects,
+              where each assignment allows me to blend creativity with
+              technology to deliver intuitive and user-friendly solutions.
+            </p>
+
+            <p className="h6">
+              Currently, I also work as a data analyst, which lets me combine
+              analytical thinking with my development skills. This background
+              enables me to create projects that are not only visually appealing
+              but also functional and user-centered.
+            </p>
+          </SequentialAnimations>
+        </Reveal>
 
         <div class="space-y-4 md:space-y-0 md:grid grid-cols-6 gap-y-6 py-[8rem]">
           <TimelineItem
@@ -139,7 +125,7 @@ const About = () => {
         </div>
 
         <div className="grid gap-8 grid-cols-2">
-          <Reveal className="col-span-2 max-md:space-y-6 md:grid md:grid-cols-2 gap-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[2.5rem] content-center">
+          <Reveal className="col-span-2 max-md:space-y-6 md:grid md:grid-cols-2 gap-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[1.5rem] content-center">
             <div className="col-span-2">
               <h4 className="h4">Technology and Frameworks</h4>
             </div>
@@ -185,19 +171,16 @@ const About = () => {
             </div>
           </Reveal>
 
-          <Reveal className="col-span-2 lg:col-span-1 space-y-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[2.5rem] content-center">
+          <Reveal className="col-span-2 lg:col-span-1 space-y-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[1.5rem] content-center">
             <h4 className="h4">Languages</h4>
-            <div className="space-y-4 lg:px-8 xl:px-16">
+            <div className="space-y-4 lg:px-8">
               <SkillProgressItem title={"JS"} icon={javascript} progress={5} />
               <SkillProgressItem title={"HTML"} icon={html} progress={8} />
               <SkillProgressItem title={"CSS"} icon={css} progress={8} />
             </div>
           </Reveal>
 
-          <Reveal
-            delay={0.5}
-            className="col-span-2 lg:col-span-1 space-y-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[2.5rem] content-center "
-          >
+          <Reveal className="col-span-2 lg:col-span-1 space-y-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[1.5rem] content-center ">
             <h4 className="h4">Portfolio</h4>
             <div></div>
           </Reveal>

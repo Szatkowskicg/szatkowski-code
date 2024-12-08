@@ -23,7 +23,7 @@ const App = () => {
     <div className="min-h-dvh">
       <Header />
       <AnimatedRoutes />
-      <BackgroundOverlay />
+      {/* <BackgroundOverlay /> */}
     </div>
   );
 };

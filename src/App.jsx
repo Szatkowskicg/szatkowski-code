@@ -4,6 +4,7 @@ import { AnimatePresence } from "motion/react";
 import Hero from "./pages/Hero";
 import About from "./components/About";
 import Header from "./components/Header";
+import Portfolio from "./components/Portfolio";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -13,6 +14,7 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Hero />} />
         <Route path="/about" element={<About />} />
+        <Route path="/portfolio" element={<Portfolio />} />
       </Routes>
     </AnimatePresence>
   );

@@ -140,4 +140,9 @@ export default {
       });
     }),
   ],
+  variants: {
+    extend: {
+      snap: ["responsive"],
+    },
+  },
 };

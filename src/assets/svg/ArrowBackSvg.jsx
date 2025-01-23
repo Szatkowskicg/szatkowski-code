@@ -4,8 +4,8 @@ const ArrowSvg = ({ active }) => {
       {/* Arrow Head */}
       <path
         d="M5 0 L0 4 L5 8"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
         className="transition-all"
         fill="none"
         stroke="white"
@@ -20,8 +20,8 @@ const ArrowSvg = ({ active }) => {
         x2="8"
         y2="4"
         className="transition-all"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
         stroke="white"
         style={{
           transform: `${active ? "scaleX(1)" : "scaleX(0)"} translateX(${

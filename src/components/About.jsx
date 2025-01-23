@@ -15,7 +15,6 @@ import {
   css,
   javascript,
 } from "../assets";
-import { motion } from "motion/react";
 import Reveal from "./Reveal";
 import SequentialAnimations from "./SequentialAnimarions";
 

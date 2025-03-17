@@ -1,5 +1,6 @@
 import { motion, useInView, useAnimation } from "motion/react";
 import React, { useEffect, useRef } from "react";
+import SequentialAnimations from "./SequentialAnimarions";
 
 const Reveal = ({ children, className, delay = 0.2, onVisible }) => {
   const ref = useRef(null);
@@ -7,7 +8,6 @@ const Reveal = ({ children, className, delay = 0.2, onVisible }) => {
     once: true,
     amount: 0.5,
   });
-
   const mainControls = useAnimation();
 
   const classes = `relative ${className || ""}`;
@@ -51,6 +51,10 @@ const Reveal = ({ children, className, delay = 0.2, onVisible }) => {
       {React.Children.map(children, (child, index) => {
         if (!React.isValidElement(child)) return child;
 
+        if (child.type === SequentialAnimations) {
+          return child;
+        }
+
         const {
           variants = {
             hidden: { opacity: 0, x: -30 },
@@ -62,8 +66,10 @@ const Reveal = ({ children, className, delay = 0.2, onVisible }) => {
             duration: 0.3,
             delay: delay + index * 0.2,
           },
-          className = "relative",
         } = child.props;
+
+        const childClassName = child.props.className || "";
+        const motionClassName = `relative ${childClassName}`.trim();
 
         return (
           <motion.div
@@ -72,7 +78,7 @@ const Reveal = ({ children, className, delay = 0.2, onVisible }) => {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             transition={transition}
-            className={className}
+            className={motionClassName}
           >
             {child}
           </motion.div>

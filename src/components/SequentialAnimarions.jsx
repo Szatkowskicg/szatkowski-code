@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-const SequentialAnimations = ({ children, className, delay = 0.4 }) => {
+const SequentialAnimations = ({ children, className, delay = 0.2 }) => {
   const classes = `relative ${className || ""}`;
 
   return (
@@ -20,7 +20,6 @@ const SequentialAnimations = ({ children, className, delay = 0.4 }) => {
             duration: 0.3,
             delay: delay + index * 0.2,
           },
-          className = "relative",
         } = child.props;
 
         return (
@@ -30,7 +29,6 @@ const SequentialAnimations = ({ children, className, delay = 0.4 }) => {
             initial="hidden"
             animate="visible"
             transition={transition}
-            className={className}
           >
             {child}
           </motion.div>

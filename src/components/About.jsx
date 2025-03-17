@@ -102,7 +102,7 @@ const About = () => {
           </SequentialAnimations>
         </Reveal>
 
-        <div class="space-y-4 md:space-y-0 md:grid grid-cols-6 gap-y-6 py-[8rem]">
+        <div className="space-y-4 md:space-y-0 md:grid grid-cols-6 gap-y-6 py-[8rem]">
           <TimelineItem
             title={"Epiq"}
             position={"Operations Analyst"}

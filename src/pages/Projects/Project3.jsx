@@ -1,7 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import myImage1 from "../../assets/images/eter_web.png";
-import myImage2 from "../../assets/images/rec_book.png";
+import myImage2 from "../../assets/images/rec_book.webp";
+import myImage3 from "../../assets/images/alfa_rims.webp";
+import myImage4 from "../../assets/images/msi_render.webp";
+import myImage5 from "../../assets/images/brevky_web.webp";
+import myImage6 from "../../assets/images/brevky_logo.webp";
+
 import Reveal from "../../components/Reveal";
 import Button from "../../components/Button";
 import SequentialAnimations from "../../components/SequentialAnimarions";
@@ -52,54 +57,82 @@ const Project3 = ({ direction, onDragEnd }) => {
           delay={0.8}
           className="lg:flex-[3] flex flex-row items-center justify-center gap-2"
         >
-          <div className="grid grid-cols-8 grid-rows-3 w-[50rem] gap-8 -rotate-[30deg]">
+          <div className="grid grid-cols-8 grid-rows-3 gap-10 -rotate-[30deg]">
             <div className="col-start-3 col-span-2 bg-blue-400 rounded-xl overflow-hidden">
               <img
-                src={myImage2}
+                src={myImage3}
                 alt="Opis zdjęcia"
-                className="h-[10rem] object-cover"
+                className="object-contain"
+                width="1200"
+                height="1200"
+                loading="lazy"
+                decoding="async"
               />
             </div>
-            <div className="col-span-3 bg-red-300">
+            <div className="col-span-3 bg-red-300 rounded-xl overflow-hidden">
               <img
-                src={myImage2}
+                src={myImage4}
                 alt="Opis zdjęcia"
-                className="h-[10rem] w-auto"
+                className="object-contain"
+                width="1600"
+                height="1200"
+                loading="lazy"
+                decoding="async"
               />
             </div>
-            <div className="row-start-2 col-span-3 bg-red-400">
+            <div className="row-start-2 col-span-3 bg-red-400 rounded-xl overflow-hidden">
               <img
-                src={myImage2}
+                src={myImage5}
                 alt="Opis zdjęcia"
-                className="h-[10rem] w-auto"
+                className="object-contain"
+                width="1600"
+                height="1200"
+                loading="lazy"
+                decoding="async"
               />
             </div>
-            <div className="row-start-2 col-span-2 bg-red-300">
+            <div className="row-start-2 col-span-2 bg-red-300 rounded-xl overflow-hidden">
               <img
-                src={myImage2}
+                src={myImage6}
                 alt="Opis zdjęcia"
-                className="h-[10rem] w-auto"
+                className="object-contain"
+                width="1200"
+                height="1200"
+                loading="lazy"
+                decoding="async"
               />
             </div>
-            <div className="row-start-2 col-span-3 bg-red-400">
+            <div className="row-start-2 col-span-3 bg-red-400 rounded-xl overflow-hidden">
               <img
-                src={myImage2}
+                src={myImage4}
                 alt="Opis zdjęcia"
-                className="h-[10rem] w-auto"
+                className="object-contain"
+                width="1600"
+                height="1200"
+                loading="lazy"
+                decoding="async"
               />
             </div>
-            <div className="col-start-2 row-start-3 col-span-3 bg-red-300">
+            <div className="col-start-2 row-start-3 col-span-3 bg-red-300 rounded-xl overflow-hidden">
               <img
-                src={myImage2}
+                src={myImage4}
                 alt="Opis zdjęcia"
-                className="h-[10rem] w-auto"
+                className="object-contain"
+                width="1600"
+                height="1200"
+                loading="lazy"
+                decoding="async"
               />
             </div>
-            <div className="row-start-3 col-span-2 bg-red-400">
+            <div className="row-start-3 col-span-2 bg-red-400 rounded-xl overflow-hidden">
               <img
-                src={myImage2}
+                src={myImage3}
                 alt="Opis zdjęcia"
-                className="h-[10rem] w-auto"
+                className="object-contain"
+                width="1200"
+                height="1200"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>

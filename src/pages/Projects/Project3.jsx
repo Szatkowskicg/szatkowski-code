@@ -53,18 +53,13 @@ const Project3 = ({ direction, onDragEnd }) => {
           </Button>
         </SequentialAnimations>
 
-        <SequentialAnimations
-          delay={0.8}
-          className="lg:flex-[3] flex flex-row items-center justify-center gap-2"
-        >
+        <SequentialAnimations delay={0.8} className="lg:flex-[3]">
           <div className="grid grid-cols-8 grid-rows-3 gap-10 -rotate-[30deg]">
             <div className="col-start-3 col-span-2 bg-blue-400 rounded-xl overflow-hidden">
               <img
                 src={myImage3}
                 alt="Opis zdjęcia"
-                className="object-contain"
-                width="1200"
-                height="1200"
+                className="object-contain w-full h-full"
                 loading="lazy"
                 decoding="async"
               />
@@ -73,9 +68,7 @@ const Project3 = ({ direction, onDragEnd }) => {
               <img
                 src={myImage4}
                 alt="Opis zdjęcia"
-                className="object-contain"
-                width="1600"
-                height="1200"
+                className="object-contain w-full h-full"
                 loading="lazy"
                 decoding="async"
               />
@@ -84,9 +77,7 @@ const Project3 = ({ direction, onDragEnd }) => {
               <img
                 src={myImage5}
                 alt="Opis zdjęcia"
-                className="object-contain"
-                width="1600"
-                height="1200"
+                className="object-contain w-full h-full"
                 loading="lazy"
                 decoding="async"
               />
@@ -95,9 +86,7 @@ const Project3 = ({ direction, onDragEnd }) => {
               <img
                 src={myImage6}
                 alt="Opis zdjęcia"
-                className="object-contain"
-                width="1200"
-                height="1200"
+                className="object-contain w-full h-full"
                 loading="lazy"
                 decoding="async"
               />
@@ -106,9 +95,7 @@ const Project3 = ({ direction, onDragEnd }) => {
               <img
                 src={myImage4}
                 alt="Opis zdjęcia"
-                className="object-contain"
-                width="1600"
-                height="1200"
+                className="object-contain w-full h-full"
                 loading="lazy"
                 decoding="async"
               />
@@ -117,9 +104,7 @@ const Project3 = ({ direction, onDragEnd }) => {
               <img
                 src={myImage4}
                 alt="Opis zdjęcia"
-                className="object-contain"
-                width="1600"
-                height="1200"
+                className="object-contain w-full h-full"
                 loading="lazy"
                 decoding="async"
               />
@@ -128,9 +113,7 @@ const Project3 = ({ direction, onDragEnd }) => {
               <img
                 src={myImage3}
                 alt="Opis zdjęcia"
-                className="object-contain"
-                width="1200"
-                height="1200"
+                className="object-contain w-full h-full"
                 loading="lazy"
                 decoding="async"
               />

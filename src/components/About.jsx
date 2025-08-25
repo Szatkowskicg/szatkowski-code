@@ -1,6 +1,4 @@
-import React from "react";
 import {
-  logo,
   react,
   nodeJs,
   viteJs,
@@ -17,6 +15,7 @@ import {
 } from "../assets";
 import Reveal from "./Reveal";
 import SequentialAnimations from "./SequentialAnimarions";
+import Footer from "./Footer";
 
 const TimelineItem = ({ className, title, position, time }) => {
   return (
@@ -185,6 +184,7 @@ const About = () => {
           </Reveal>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

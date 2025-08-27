@@ -16,6 +16,8 @@ import {
 import Reveal from "./Reveal";
 import SequentialAnimations from "./SequentialAnimarions";
 import Footer from "./Footer";
+import Button from "./Button";
+import { CircleCheckBig, CodeXml } from "lucide-react";
 
 const TimelineItem = ({ className, title, position, time }) => {
   return (
@@ -69,22 +71,23 @@ const SkillIconItem = ({ icon, title }) => {
 
 const About = () => {
   return (
-    <div className="relative h-full pt-[10rem] pb-[5rem] overflow-y-auto box-border">
-      <div className="container">
+    <div className="relative h-full pt-[10rem] overflow-y-auto box-border">
+      <div className="container space-y-[8rem]">
+        {/* First section - Pawel */}
         <Reveal className="flex flex-col lg:flex-row max-lg:space-y-8">
           <SequentialAnimations>
-            <h2 className="h1 font-black">
+            <h1 className="h1 font-black">
               Paweł <br />
               Szatkowski
-            </h2>
-            <h5 className="h5 font-medium">Front-End Developer</h5>
+            </h1>
+            <h5 className="h5 font-medium">Full-Stack Developer</h5>
           </SequentialAnimations>
 
           <SequentialAnimations className="lg:pl-[8rem] space-y-8" delay={0.8}>
-            <h4 className="h2">
+            <h2 className="h2">
               Driven to create refined, inclusive digital experiences that are
               both visually precise and user-centered.
-            </h4>
+            </h2>
 
             <p className="h6">
               I have gained valuable experience working on freelance projects,
@@ -101,87 +104,64 @@ const About = () => {
           </SequentialAnimations>
         </Reveal>
 
-        <div className="space-y-4 md:space-y-0 md:grid grid-cols-6 gap-y-6 py-[8rem]">
-          <TimelineItem
-            title={"Epiq"}
-            position={"Operations Analyst"}
-            time={"2021~"}
-            className={"col-start-4 col-span-3"}
-          />
-          <TimelineItem
-            title={"Freelance"}
-            position={"Graphic Designer / Web and App Developer"}
-            time={"2019~"}
-            className={"row-start-2 col-start-3 col-span-4"}
-          />
-          <TimelineItem
-            title={"Project Insediamento"}
-            position={"Graphic Designer"}
-            time={"2017 - 2019"}
-            className={"row-start-3 col-span-2"}
-          />
+        {/* Second section - Build modern web */}
+        <div className="flex">
+          <div className="w-2/3 space-y-8">
+            <h2 className="h2 pb-8">
+              Building modern web experiences powered by AI.
+            </h2>
+
+            <div className="px-8 space-y-8 body-1">
+              <div className="flex items-center space-x-8">
+                <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
+                <p>
+                  I specialize in crafting clean, scalable applications with
+                  React, JavaScript, and Tailwind CSS, supported by Python on
+                  the backend.
+                </p>
+              </div>
+
+              <div className="flex items-center space-x-8">
+                <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
+
+                <p>
+                  My workflow is enhanced by AI tools that speed up coding,
+                  testing, and problem-solving, letting me focus on what matters
+                  most: building great user experiences.
+                </p>
+              </div>
+
+              <div className="flex items-center space-x-8">
+                <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
+
+                <p>Always learning, always experimenting, always creating.</p>
+              </div>
+            </div>
+          </div>
+          <div className="w-1/3"></div>
         </div>
 
-        <div className="grid gap-8 grid-cols-2">
-          <Reveal className="col-span-2 max-md:space-y-6 md:grid md:grid-cols-2 gap-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[1.5rem] content-center">
-            <div className="col-span-2">
-              <h4 className="h4">Technology and Frameworks</h4>
-            </div>
-            <div className="">
-              <p className="text-n-3 font-semibold">Web</p>
-              <div className="space-y-4 py-4 lg:px-8 xl:px-16">
-                <SkillProgressItem
-                  title={"React.js"}
-                  icon={react}
-                  progress={6}
-                />
-                <SkillProgressItem
-                  title={"Node.js"}
-                  icon={nodeJs}
-                  progress={2}
-                />
-              </div>
-            </div>
-            <div className="">
-              <p className="text-n-3 font-semibold">Mobile</p>
-              <div className="space-y-4 py-4 lg:px-8 xl:px-16">
-                <SkillProgressItem
-                  title={"React Native"}
-                  icon={react}
-                  progress={5}
-                />
-              </div>
-            </div>
-            <div className="md:col-start-2 md:row-start-2 md:row-span-2 space-y-4">
-              <p className="text-n-3 font-semibold">Other</p>
-              <div className="flex justify-center items-center">
-                <div className="grid grid-cols-4 gap-2 lg:gap-4">
-                  <SkillIconItem icon={viteJs} title="Vite.js" />
-                  <SkillIconItem icon={tailwind} title="Expo" />
-                  <SkillIconItem icon={appwrite} title="React" />
-                  <SkillIconItem icon={firebase} title="React" />
-                  <SkillIconItem icon={expo} title="React" />
-                  <SkillIconItem icon={git} title="React" />
-                  <SkillIconItem icon={illustrator} title="React" />
-                  <SkillIconItem icon={figma} title="React" />
-                </div>
-              </div>
-            </div>
-          </Reveal>
+        {/* Third section - Tiles */}
+        <div className="">
+          <div className="flex-col flex items-center border-n-1 border-[.1rem] rounded-2xl w-[15rem]">
+            <CodeXml className="w-6 h-6 shrink-0" />
+            <h4 className="h4">Frontend</h4>
+            <p className="text-center">
+              React.js • HTML <br /> CSS • Tailwind
+            </p>
+          </div>
+        </div>
 
-          <Reveal className="col-span-2 lg:col-span-1 space-y-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[1.5rem] content-center">
-            <h4 className="h4">Languages</h4>
-            <div className="space-y-4 lg:px-8">
-              <SkillProgressItem title={"JS"} icon={javascript} progress={5} />
-              <SkillProgressItem title={"HTML"} icon={html} progress={8} />
-              <SkillProgressItem title={"CSS"} icon={css} progress={8} />
-            </div>
-          </Reveal>
-
-          <Reveal className="col-span-2 lg:col-span-1 space-y-6 py-8 px-6 lg:px-12 bg-n-7 rounded-[1.5rem] content-center ">
-            <h4 className="h4">Portfolio</h4>
-            <div></div>
-          </Reveal>
+        {/* Fourth section - Portfolio call to action  */}
+        <div className="flex flex-col items-center justify-center space-y-4">
+          <h3 className="h5 font-normal text-color-1">
+            Code smarter. Build faster. Stay creative.
+          </h3>
+          <h2 className="h2 text-center pb-2">
+            Ideas are cool. Execution is better.
+            <br /> Here’s mine.
+          </h2>
+          <Button className={"text-xl"}>Portfolio</Button>
         </div>
       </div>
       <Footer />

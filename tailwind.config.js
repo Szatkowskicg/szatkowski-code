@@ -12,8 +12,12 @@ export default {
     extend: {
       colors: {
         color: {
-          1: "#FD08BD",
-          2: "#06EBD7",
+          // pink
+          1: "#C94FA3",
+          1.2: "#E0A8D1",
+          // aqua
+          2: "#04CFA7",
+          2.2: "#9DE9D9",
           3: "#FD0300",
           4: "#FF5C00",
           5: "#858DFF",

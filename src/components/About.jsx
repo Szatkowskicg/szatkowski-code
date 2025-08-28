@@ -17,7 +17,14 @@ import Reveal from "./Reveal";
 import SequentialAnimations from "./SequentialAnimarions";
 import Footer from "./Footer";
 import Button from "./Button";
-import { CircleCheckBig, CodeXml } from "lucide-react";
+import {
+  CircleCheckBig,
+  CodeXml,
+  Server,
+  Bot,
+  ShieldCheck,
+} from "lucide-react";
+import Card from "./Card";
 
 const TimelineItem = ({ className, title, position, time }) => {
   return (
@@ -142,14 +149,46 @@ const About = () => {
         </div>
 
         {/* Third section - Tiles */}
-        <div className="">
-          <div className="flex-col flex items-center border-n-1 border-[.1rem] rounded-2xl w-[15rem]">
-            <CodeXml className="w-6 h-6 shrink-0" />
-            <h4 className="h4">Frontend</h4>
-            <p className="text-center">
-              React.js • HTML <br /> CSS • Tailwind
-            </p>
-          </div>
+        <div className="flex justify-between">
+          <Card
+            title={"Frontend"}
+            subtitle={
+              <>
+                React.js • HTML • CSS <br /> Tailwind
+              </>
+            }
+            icon={CodeXml}
+          />
+
+          <Card
+            title={"Backend"}
+            subtitle={
+              <>
+                Python • APIs <br /> Automation
+              </>
+            }
+            icon={Server}
+          />
+
+          <Card
+            title={"AI-Driven"}
+            subtitle={
+              <>
+                Code assist • Prototyping <br /> Optimization
+              </>
+            }
+            icon={Bot}
+          />
+
+          <Card
+            title={"Security"}
+            subtitle={
+              <>
+                Secure code • Privacy-first <br /> Reliable apps
+              </>
+            }
+            icon={ShieldCheck}
+          />
         </div>
 
         {/* Fourth section - Portfolio call to action  */}

@@ -25,6 +25,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import Card from "./Card";
+import BackgroundGradient from "./design/BackgroundGradient";
 
 const TimelineItem = ({ className, title, position, time }) => {
   return (
@@ -164,7 +165,7 @@ const About = () => {
             title={"Backend"}
             subtitle={
               <>
-                Python • APIs <br /> Automation
+                Python • Node.js <br /> APIs • Automation
               </>
             }
             icon={Server}
@@ -193,7 +194,7 @@ const About = () => {
 
         {/* Fourth section - Portfolio call to action  */}
         <div className="flex flex-col items-center justify-center space-y-4">
-          <h3 className="h5 font-normal text-color-1">
+          <h3 className="h5 font-normal text-color-2">
             Code smarter. Build faster. Stay creative.
           </h3>
           <h2 className="h2 text-center pb-2">
@@ -202,6 +203,14 @@ const About = () => {
           </h2>
           <Button className={"text-xl"}>Portfolio</Button>
         </div>
+        <section className="relative min-h-screen flex items-center justify-center">
+          <BackgroundGradient />
+          <div className="relative z-10 text-center">
+            <h1 className="text-5xl font-bold text-white">
+              Ideas are cool. Execution is better.
+            </h1>
+          </div>
+        </section>
       </div>
       <Footer />
     </div>

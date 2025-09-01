@@ -25,7 +25,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import Card from "./Card";
-import BackgroundGradient from "./design/BackgroundGradient";
+import GradientDiv from "./design/GradientDiv";
 
 const TimelineItem = ({ className, title, position, time }) => {
   return (
@@ -113,41 +113,43 @@ const About = () => {
         </Reveal>
 
         {/* Second section - Build modern web */}
-        <div className="flex">
-          <div className="w-2/3 space-y-8">
-            <h2 className="h2 pb-8">
-              Building modern web experiences powered by AI.
-            </h2>
+        <GradientDiv fade="bottom" gradient="br">
+          <div className="flex">
+            <div className="w-2/3 space-y-8">
+              <h2 className="h2 pb-8">
+                Building modern web experiences powered by AI.
+              </h2>
 
-            <div className="px-8 space-y-8 body-1">
-              <div className="flex items-center space-x-8">
-                <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
-                <p>
-                  I specialize in crafting clean, scalable applications with
-                  React, JavaScript, and Tailwind CSS, supported by Python on
-                  the backend.
-                </p>
-              </div>
+              <div className="px-8 space-y-8 body-1">
+                <div className="flex items-center space-x-8">
+                  <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
+                  <p>
+                    I specialize in crafting clean, scalable applications with
+                    React, JavaScript, and Tailwind CSS, supported by Python on
+                    the backend.
+                  </p>
+                </div>
 
-              <div className="flex items-center space-x-8">
-                <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
+                <div className="flex items-center space-x-8">
+                  <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
 
-                <p>
-                  My workflow is enhanced by AI tools that speed up coding,
-                  testing, and problem-solving, letting me focus on what matters
-                  most: building great user experiences.
-                </p>
-              </div>
+                  <p>
+                    My workflow is enhanced by AI tools that speed up coding,
+                    testing, and problem-solving, letting me focus on what
+                    matters most: building great user experiences.
+                  </p>
+                </div>
 
-              <div className="flex items-center space-x-8">
-                <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
+                <div className="flex items-center space-x-8">
+                  <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
 
-                <p>Always learning, always experimenting, always creating.</p>
+                  <p>Always learning, always experimenting, always creating.</p>
+                </div>
               </div>
             </div>
+            <div className="w-1/3"></div>
           </div>
-          <div className="w-1/3"></div>
-        </div>
+        </GradientDiv>
 
         {/* Third section - Tiles */}
         <div className="flex justify-between">
@@ -193,24 +195,18 @@ const About = () => {
         </div>
 
         {/* Fourth section - Portfolio call to action  */}
-        <div className="flex flex-col items-center justify-center space-y-4">
-          <h3 className="h5 font-normal text-color-2">
-            Code smarter. Build faster. Stay creative.
-          </h3>
-          <h2 className="h2 text-center pb-2">
-            Ideas are cool. Execution is better.
-            <br /> Here’s mine.
-          </h2>
-          <Button className={"text-xl"}>Portfolio</Button>
-        </div>
-        <section className="relative min-h-screen flex items-center justify-center">
-          <BackgroundGradient />
-          <div className="relative z-10 text-center">
-            <h1 className="text-5xl font-bold text-white">
+        <GradientDiv fade="top" gradient="tl">
+          <div className="flex flex-col items-center justify-center space-y-4">
+            <h3 className="h5 font-normal text-color-2">
+              Code smarter. Build faster. Stay creative.
+            </h3>
+            <h2 className="h2 text-center pb-2">
               Ideas are cool. Execution is better.
-            </h1>
+              <br /> Here’s mine.
+            </h2>
+            <Button className={"text-xl"}>Portfolio</Button>
           </div>
-        </section>
+        </GradientDiv>
       </div>
       <Footer />
     </div>

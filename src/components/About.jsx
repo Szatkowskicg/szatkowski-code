@@ -80,18 +80,18 @@ const SkillIconItem = ({ icon, title }) => {
 const About = () => {
   return (
     <div className="relative h-full pt-[10rem] overflow-y-auto box-border">
-      <div className="container space-y-[8rem]">
+      <div className="container space-y-[6rem]">
         {/* First section - Pawel */}
         <Reveal className="flex flex-col lg:flex-row max-lg:space-y-8">
-          <SequentialAnimations>
+          <div>
             <h1 className="h1 font-black">
               Paweł <br />
               Szatkowski
             </h1>
             <h5 className="h5 font-medium">Full-Stack Developer</h5>
-          </SequentialAnimations>
+          </div>
 
-          <SequentialAnimations className="lg:pl-[8rem] space-y-8" delay={0.8}>
+          <div className="lg:pl-[8rem] space-y-8">
             <h2 className="h2">
               Driven to create refined, inclusive digital experiences that are
               both visually precise and user-centered.
@@ -109,50 +109,54 @@ const About = () => {
               enables me to create projects that are not only visually appealing
               but also functional and user-centered.
             </p>
-          </SequentialAnimations>
+          </div>
         </Reveal>
 
         {/* Second section - Build modern web */}
-        <GradientDiv fade="bottom" gradient="br">
-          <div className="flex">
-            <div className="w-2/3 space-y-8">
-              <h2 className="h2 pb-8">
-                Building modern web experiences powered by AI.
-              </h2>
+        <Reveal>
+          <GradientDiv fade="bottom" gradient="br">
+            <div className="flex">
+              <div className="w-2/3 space-y-8">
+                <h2 className="h2 pb-8">
+                  Building modern web experiences powered by AI.
+                </h2>
 
-              <div className="px-8 space-y-8 body-1">
-                <div className="flex items-center space-x-8">
-                  <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
-                  <p>
-                    I specialize in crafting clean, scalable applications with
-                    React, JavaScript, and Tailwind CSS, supported by Python on
-                    the backend.
-                  </p>
-                </div>
+                <div className="px-8 space-y-8 body-1">
+                  <div className="flex items-center space-x-8">
+                    <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
+                    <p>
+                      I specialize in crafting clean, scalable applications with
+                      React, JavaScript, and Tailwind CSS, supported by Python
+                      on the backend.
+                    </p>
+                  </div>
 
-                <div className="flex items-center space-x-8">
-                  <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
+                  <div className="flex items-center space-x-8">
+                    <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
 
-                  <p>
-                    My workflow is enhanced by AI tools that speed up coding,
-                    testing, and problem-solving, letting me focus on what
-                    matters most: building great user experiences.
-                  </p>
-                </div>
+                    <p>
+                      My workflow is enhanced by AI tools that speed up coding,
+                      testing, and problem-solving, letting me focus on what
+                      matters most: building great user experiences.
+                    </p>
+                  </div>
 
-                <div className="flex items-center space-x-8">
-                  <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
+                  <div className="flex items-center space-x-8">
+                    <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
 
-                  <p>Always learning, always experimenting, always creating.</p>
+                    <p>
+                      Always learning, always experimenting, always creating.
+                    </p>
+                  </div>
                 </div>
               </div>
+              <div className="w-1/3"></div>
             </div>
-            <div className="w-1/3"></div>
-          </div>
-        </GradientDiv>
+          </GradientDiv>
+        </Reveal>
 
         {/* Third section - Tiles */}
-        <div className="flex justify-between">
+        <Reveal className="flex justify-between">
           <Card
             title={"Frontend"}
             subtitle={
@@ -192,21 +196,23 @@ const About = () => {
             }
             icon={ShieldCheck}
           />
-        </div>
+        </Reveal>
 
         {/* Fourth section - Portfolio call to action  */}
-        <GradientDiv fade="top" gradient="tl">
-          <div className="flex flex-col items-center justify-center space-y-4">
-            <h3 className="h5 font-normal text-color-2">
-              Code smarter. Build faster. Stay creative.
-            </h3>
-            <h2 className="h2 text-center pb-2">
-              Ideas are cool. Execution is better.
-              <br /> Here’s mine.
-            </h2>
-            <Button className={"text-xl"}>Portfolio</Button>
-          </div>
-        </GradientDiv>
+        <Reveal>
+          <GradientDiv fade="top" gradient="tl">
+            <div className="flex flex-col items-center justify-center space-y-4">
+              <h3 className="h5 font-normal text-color-2">
+                Code smarter. Build faster. Stay creative.
+              </h3>
+              <h2 className="h2 text-center pb-2">
+                Ideas are cool. Execution is better.
+                <br /> Here’s mine.
+              </h2>
+              <Button className={"text-xl"}>Portfolio</Button>
+            </div>
+          </GradientDiv>
+        </Reveal>
       </div>
       <Footer />
     </div>

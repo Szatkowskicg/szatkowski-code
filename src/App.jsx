@@ -22,7 +22,7 @@ const AnimatedRoutes = () => {
 
 const App = () => {
   return (
-    <div className="min-h-dvh">
+    <div className="min-h-dvh overscroll-none">
       <Header />
       <AnimatedRoutes />
       {/* <BackgroundOverlay /> */}

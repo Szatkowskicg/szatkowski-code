@@ -28,7 +28,7 @@ const Card = ({ title, subtitle, icon: Icon }) => {
   return (
     <div className="perspective-[1200px]">
       <motion.div
-        className="group relative w-[17rem] h-80 rounded-2xl bg-[#0D1117] border border-white/10 flex flex-col items-center justify-center p-6 overflow-hidden transition-all duration-200 hover:border-[#C94FA3]/50"
+        className="group relative w-[17rem] h-80 rounded-2xl bg-[#0D1117] border border-white/10 flex flex-col items-center justify-center p-6 overflow-hidden transition-all duration-200 hover:border-white/20"
         style={{
           rotateX: springX,
           rotateY: springY,

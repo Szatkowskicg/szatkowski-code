@@ -17,11 +17,10 @@ const Header = () => {
     damping: 25,
     mass: 0.5,
   });
-  const width = useTransform(smoothScrollY, [0, 300], ["100%", "60%"]);
-  const borderRadius = useTransform(scrollY, [0, 300], ["0rem", "1rem"]);
+  const width = useTransform(smoothScrollY, [0, 250], ["100%", "60%"]);
   const backgroundColor = useTransform(
     scrollY,
-    [0, 300],
+    [0, 100],
     ["rgba(255,255,255,0)", "rgba(255,255,255,0.04)"]
   );
   const backdropFilter = useTransform(
@@ -50,11 +49,10 @@ const Header = () => {
     <motion.div
       style={{
         width,
-        borderRadius,
         backgroundColor,
         backdropFilter,
       }}
-      className="sticky top-3 lg:top-10 z-50 mx-auto flex items-center justify-between px-6 lg:px-10 xl:px-16 h-[4.75rem]"
+      className="fixed left-1/2 -translate-x-1/2 top-3 lg:top-10 z-50 flex items-center justify-between px-6 lg:px-10 xl:px-16 h-[4.75rem] rounded-2xl"
     >
       {/* Logo */}
       <motion.div

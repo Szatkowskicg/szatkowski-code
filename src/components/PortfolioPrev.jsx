@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 
 export const PortfolioPrev = () => {
   return (
-    <div className="flex justify-start items-center w-80 bg-color-1 h-80">
+    <div className="flex justify-start items-center w-80 bg-color-2 h-80">
       <div className="flex just">
         <div className="rotate-[-90deg] ">
           <h2 className="text-white text-3xl font-bold tracking-wider">

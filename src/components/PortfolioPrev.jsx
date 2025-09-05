@@ -23,13 +23,13 @@ export const PortfolioPrev = () => {
         <img
           src={PortfolioStripes}
           alt="Portfolio stripes"
-          className="absolute -bottom-12 -left-6 w-[8rem] -z-10"
+          className="absolute -bottom-12 -left-4 w-[8rem] -z-10"
         />
 
         <img
           src={AnyfabPic}
           alt="Portfolio preview"
-          className="w-[25rem] h-auto relative z-10"
+          className="pl-6 w-[375px] h-auto relative z-10"
         />
       </div>
     </div>

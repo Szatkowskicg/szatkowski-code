@@ -32,10 +32,10 @@ const Hero = () => {
 
       {/* Hero Image */}
       <motion.div
-        initial={{ opacity: 0, translateX: 50 }}
-        animate={{ opacity: 1, translateX: 0 }}
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="absolute left-1/2 -translate-x-1/2 bottom-0"
+        className="absolute left-1/2 -translate-x-1/2 bottom-0 md:ml-[-100px] lg:ml-[-125px] xl:ml-[-150px]"
       >
         <img
           src={heroImage}
@@ -45,7 +45,7 @@ const Hero = () => {
       </motion.div>
 
       {/* Portfolio preview */}
-      <div className="absolute right-32 bottom-32 space-y-10">
+      <div className="absolute right-32 bottom-32 space-y-20">
         <PortfolioPrev />
         <InterfacesBlock />
       </div>

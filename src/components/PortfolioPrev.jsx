@@ -1,40 +1,37 @@
 import { motion } from "motion/react";
+import PortfolioStripes from "../assets/portfolio_prev_stripes.svg";
+import AnyfabPic from "../assets/images/Anyfab.png";
 
 export const PortfolioPrev = () => {
   return (
-    <div className="flex justify-start items-center w-80 bg-color-2 h-80">
-      <div className="flex just">
-        <div className="rotate-[-90deg] ">
-          <h2 className="text-white text-3xl font-bold tracking-wider">
+    <div className="flex w-full relative pb-12">
+      {/* Lewa sekcja */}
+      <div className="flex flex-col justify-center items-center w-[25%] relative">
+        <div className="rotate-[-90deg] absolute -left-12 bottom-6">
+          <h4 className="text-3xl font-bold tracking-wider font-orbitron whitespace-nowrap">
             Let’s See
-          </h2>
-          <p className="text-gray-300 text-lg">My Portfolio</p>
+          </h4>
+          <p className="font-orbitron text-2xl whitespace-nowrap">
+            My Portfolio
+          </p>
         </div>
       </div>
-      {/* <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative rounded-2xl shadow-2xl overflow-hidden max-w-3xl"
-      >
+
+      {/* Prawa sekcja */}
+      <div className="flex justify-center items-center w-[75%] relative">
+        {/* stripes za obrazkiem */}
         <img
-          //   src="/your-image.png"
-          alt="Portfolio preview"
-          className="w-full h-auto object-cover"
+          src={PortfolioStripes}
+          alt="Portfolio stripes"
+          className="absolute -bottom-12 -left-6 w-[8rem] -z-10"
         />
 
-        <motion.div
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="absolute left-0 top-1/2 -translate-y-1/2 rotate-[-90deg] origin-left"
-        >
-          <h2 className="text-white text-3xl font-bold tracking-wider">
-            Let’s See
-          </h2>
-          <p className="text-gray-300 text-lg">My Portfolio</p>
-        </motion.div>
-      </motion.div> */}
+        <img
+          src={AnyfabPic}
+          alt="Portfolio preview"
+          className="w-[25rem] h-auto relative z-10"
+        />
+      </div>
     </div>
   );
 };

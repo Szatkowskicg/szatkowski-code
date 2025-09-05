@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import heroImage from "../assets/images/hero_pic.png";
 import Button from "./Button";
 import PortfolioPrev from "./PortfolioPrev";
+import InterfacesBlock from "./PortfolioInterfaces";
 
 const Hero = () => {
   const gradient =
@@ -46,7 +47,7 @@ const Hero = () => {
       {/* Portfolio preview */}
       <div className="absolute right-32 bottom-32 space-y-10">
         <PortfolioPrev />
-        <PortfolioPrev />
+        <InterfacesBlock />
       </div>
     </section>
   );

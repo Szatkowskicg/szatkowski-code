@@ -46,7 +46,7 @@ export default {
       fontFamily: {
         sans: ["var(--font-inter)", ...fontFamily.sans],
         code: "var(--font-code)",
-        grotesk: "var(--font-grotesk)",
+        orbitron: "var(--font-orbitron)",
       },
       letterSpacing: {
         tagline: ".15em",
@@ -122,8 +122,7 @@ export default {
           "@apply text-sm": {},
         },
         ".tagline": {
-          "@apply font-grotesk font-light text-xs tracking-tagline uppercase":
-            {},
+          "@apply font-code font-light text-xs tracking-tagline uppercase": {},
         },
         ".quote": {
           "@apply text-lg leading-normal": {},

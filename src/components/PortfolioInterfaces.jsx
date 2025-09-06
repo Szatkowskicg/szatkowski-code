@@ -1,10 +1,10 @@
 export const InterfacesBlock = () => {
   return (
     <div className="flex items-start space-x-4 max-w-lg">
-      <div className="text-3xl text-accent font-normal mt-1">›</div>
+      <div className="h4 font-normal mt-1">›</div>
 
       <div>
-        <h3 className="text-2xl font-orbitron font-normal">
+        <h3 className="h5 font-orbitron font-normal">
           Build the interfaces <br /> of tomorrow
         </h3>
         <p className="font-orbitron mt-3 text-sm font-normal">

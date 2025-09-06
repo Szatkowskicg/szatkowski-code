@@ -26,6 +26,11 @@
     }
 }
 
+::selection {
+    background-color: theme('colors.color.1');
+    color: white;
+}
+
 .rotate-45 {
     @apply rotate-[45deg];
 }
@@ -88,4 +93,11 @@
 
 .-rotate-360 {
     @apply rotate-[-360deg];
+}
+
+img {
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
 }

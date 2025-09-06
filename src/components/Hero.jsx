@@ -3,6 +3,7 @@ import heroImage from "../assets/images/hero_pic.png";
 import Button from "./Button";
 import PortfolioPrev from "./PortfolioPrev";
 import InterfacesBlock from "./PortfolioInterfaces";
+import SocialsHero from "./SocialsHero";
 
 const Hero = () => {
   const gradient =
@@ -24,8 +25,12 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="text-white max-w-xl"
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">I'M PAWEL</h1>
-          <p className="text-lg md:text-2xl mb-6">Full-stack developer</p>
+          <h1 className="font-orbitron text-4xl md:text-6xl font-bold mb-4">
+            I'M PAWEL
+          </h1>
+          <p className="font-orbitron text-lg md:text-2xl mb-6">
+            Full-stack developer
+          </p>
           <Button className={"text-xl"}>See More</Button>
         </motion.div>
       </div>
@@ -35,19 +40,23 @@ const Hero = () => {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="absolute left-1/2 -translate-x-1/2 bottom-0 md:ml-[-100px] lg:ml-[-125px] xl:ml-[-150px]"
+        className="absolute left-1/2 -translate-x-1/2 bottom-0 md:ml-[-100px] lg:ml-[-125px] xl:ml-[-150px] 2xl:ml-[-160px]"
       >
         <img
           src={heroImage}
           alt="Hero"
-          className="w-full md:w-[200px] lg:w-[250px] xl:w-[300px]"
+          className="w-full md:w-[200px] lg:w-[250px] xl:w-[300px] 2xl:w-[320px]"
         />
       </motion.div>
 
       {/* Portfolio preview */}
-      <div className="absolute right-32 bottom-32 space-y-20">
+      <div className="absolute right-32 bottom-32 space-y-20 max-md:hidden">
         <PortfolioPrev />
         <InterfacesBlock />
+      </div>
+
+      <div className="absolute bottom-12 left-16">
+        <SocialsHero />
       </div>
     </section>
   );

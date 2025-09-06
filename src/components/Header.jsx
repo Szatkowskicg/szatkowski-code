@@ -78,7 +78,7 @@ const Header = () => {
               key={item.id}
               to={item.url}
               onClick={handleClick}
-              className={`block group relative text-2xl text-n-1 transition-colors py-6 md:py-8 lg:py-2 lg:px-1 lg:text-sm lg:font-semibold lg:leading-5 lg:hover:text-n-1/60`}
+              className={`block group relative text-2xl text-n-1 transition-colors py-6 md:py-8 lg:py-2 lg:px-1 lg:text-sm lg:font-semibold lg:leading-5 uppercase`}
             >
               <motion.div
                 initial={{ x: 30, opacity: 0 }}

@@ -36,7 +36,8 @@ const SocialsHero = () => {
         <Facebook className="w-5 h-5" />
       </a>
 
-      <span></span>
+      <span>ENG</span>
+      <span>PLN</span>
       <img src="" />
     </div>
   );

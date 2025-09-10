@@ -1,62 +1,45 @@
-import { Github, Linkedin, Instagram, Facebook } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import PlIcon from "../assets/images/polish_icon.png";
-import EngIcon from "../assets/images/english_icon.png";
+import { socials, languages } from "../constants";
 
 const SocialsHero = () => {
-  const [lang, setLang] = useState("pl");
+  const [lang, setLang] = useState("en");
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex flex-col items-start justify-center">
-      <div className="flex flex-col space-y-4 pb-4 items-center justify-center">
-        <a
-          href="https://github.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-white transition"
-        >
-          <Github className="w-5 h-5 m-1" />
-        </a>
-        <a
-          href="https://linkedin.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-white transition"
-        >
-          <Linkedin className="w-5 h-5 m-1" />
-        </a>
-        <a
-          href="https://instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-white transition"
-        >
-          <Instagram className="w-5 h-5 m-1" />
-        </a>
-        <a
-          href="https://facebook.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-white transition"
-        >
-          <Facebook className="w-5 h-5 m-1" />
-        </a>
-
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-col items-start justify-center"
+    >
+      {/* Social links */}
+      <div className="flex flex-col space-y-4 pb-4 items-center">
+        {socials.map(({ href, icon: Icon }) => (
+          <a
+            key={href}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition"
+          >
+            <Icon className="w-5 h-5 m-1" />
+          </a>
+        ))}
         <div className="w-px h-7 bg-n-1/10" />
       </div>
 
+      {/* Language switcher */}
       <div
         className="relative flex items-center"
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
       >
-        {/* Main lang icon */}
-        <div className="w-7 h-7 rounded-full overflow-hidden">
+        {/* Active language icon */}
+        <div className="w-7 h-7 rounded-full overflow-hidden relative z-10">
           <img
-            src={lang === "pl" ? PlIcon : EngIcon}
-            alt="Language"
+            src={languages.find((l) => l.code === lang)?.icon}
+            alt={lang.toUpperCase()}
             className="w-full h-full"
           />
         </div>
@@ -64,38 +47,33 @@ const SocialsHero = () => {
         {/* Dropdown */}
         <AnimatePresence>
           {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 8 }}
-              exit={{ opacity: 0, x: -10 }}
-              transition={{ duration: 0.2 }}
-              className="flex items-center bg-n-1/10 shadow-md rounded-full"
-            >
-              {/* Polish */}
-              <div
-                onClick={() => setLang("pl")}
-                className="flex items-center gap-1 px-3 py-1 cursor-pointer hover:scale-105 transition"
+            <div className="absolute left-0 overflow-hidden rounded-l-full">
+              <motion.div
+                initial={{ x: "-100%", opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: "-100%", opacity: 0 }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+                className="flex items-center bg-n-1/10 shadow-md rounded-full pl-9 pr-2 py-1"
               >
-                {/* <img src={PlIcon} className="w-4 h-4 rounded-full" alt="PL" /> */}
-                <p className="text-sm">PL</p>
-              </div>
-
-              {/* Separator */}
-              <div className="w-px h-7 bg-n-1/10" />
-
-              {/* English */}
-              <div
-                onClick={() => setLang("en")}
-                className="flex items-center gap-1 px-3 py-1 cursor-pointer hover:scale-105 transition"
-              >
-                {/* <img src={EngIcon} className="w-4 h-4 rounded-full" alt="EN" /> */}
-                <p className="text-sm">EN</p>
-              </div>
-            </motion.div>
+                {languages.map((l, i) => (
+                  <div key={l.code} className="flex items-center">
+                    <button
+                      onClick={() => setLang(l.code)}
+                      className="px-2 text-sm cursor-pointer hover:scale-105 transition"
+                    >
+                      {l.label}
+                    </button>
+                    {i < languages.length - 1 && (
+                      <div className="w-px h-5 bg-n-1/10 mx-1" />
+                    )}
+                  </div>
+                ))}
+              </motion.div>
+            </div>
           )}
         </AnimatePresence>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

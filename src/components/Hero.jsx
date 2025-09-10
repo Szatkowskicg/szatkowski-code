@@ -12,7 +12,19 @@ const Hero = () => {
   return (
     <section className="relative w-full h-screen md:h-[100dvh] flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0" style={{ background: gradient }} />
+      <motion.div
+        initial={{ opacity: 0, x: -50, y: -50 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
+        transition={{ duration: 0.8 }}
+        exit={{
+          opacity: 0,
+          x: -50,
+          y: -50,
+          transition: { ease: "easeIn", duration: 0.3 },
+        }}
+        className="absolute inset-0"
+        style={{ background: gradient }}
+      />
 
       {/* Background Blob */}
       {/* <div className="absolute w-[400px] h-[400px] bg-purple-700/30 rounded-full -right-32 -top-32 blur-3xl animate-blob"></div> */}

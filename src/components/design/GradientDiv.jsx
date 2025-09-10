@@ -5,7 +5,7 @@ const gradientVariants = {
   right: "bg-gradient-to-r from-white/10 to-transparent",
 };
 
-// fade: "top" lub "bottom"
+// fade: "top" or "bottom"
 // gradient: "tr", "tl", "br", "bl"
 const GradientDiv = ({
   className = "",

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ArrowSvg from "../assets/svg/ArrowSvg";
 
-const Button = ({ className, href, onClick, children, px, white }) => {
+const Button = ({ className, href, onClick, children, px }) => {
   const [active, setActive] = useState(false);
 
   const classes = `button relative inline-flex items-center justify-center py-3 rounded-full border border-white transition-colors text-n-1 hover:bg-n-1/10 space-x-1 ${

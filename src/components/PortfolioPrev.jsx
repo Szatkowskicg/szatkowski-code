@@ -4,7 +4,17 @@ import AnyfabPic from "../assets/images/Anyfab.png";
 
 export const PortfolioPrev = () => {
   return (
-    <div className="flex w-full relative pb-12">
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, delay: 0.9 }}
+      exit={{
+        opacity: 0,
+        x: 50,
+        transition: { ease: "easeIn", duration: 0.3 },
+      }}
+      className="flex w-full relative pb-12"
+    >
       {/* Left section */}
       <div className="flex flex-col justify-center items-center w-[25%] relative">
         <div className="rotate-[-90deg] absolute -left-8 bottom-5 xl:-left-12 xl:bottom-6">
@@ -31,7 +41,7 @@ export const PortfolioPrev = () => {
           className="pl-6 md:w-[175px] lg:w-[275px] xl:w-[350px] 2xl:w-[375px] h-auto relative z-10"
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

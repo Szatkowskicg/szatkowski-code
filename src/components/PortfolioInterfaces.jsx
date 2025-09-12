@@ -1,6 +1,18 @@
+import { motion } from "motion/react";
+
 export const InterfacesBlock = () => {
   return (
-    <div className="flex items-start space-x-4 max-w-lg">
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, delay: 1.2 }}
+      exit={{
+        opacity: 0,
+        x: 50,
+        transition: { ease: "easeIn", duration: 0.3 },
+      }}
+      className="flex items-start space-x-4 max-w-lg"
+    >
       <div className="h4 font-normal mt-1">›</div>
 
       <div>
@@ -16,7 +28,7 @@ export const InterfacesBlock = () => {
           at a time.
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

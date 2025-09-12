@@ -5,7 +5,7 @@ const Reveal = ({ children, className }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
-    amount: 0.3,
+    amount: 0.5,
   });
   const mainControls = useAnimation();
 
@@ -25,14 +25,14 @@ const Reveal = ({ children, className }) => {
       }}
       exit={{
         opacity: 0,
-        x: -30,
+        y: -30,
         transition: { ease: "easeIn", duration: 0.3 },
       }}
       initial="hidden"
       animate={mainControls}
       transition={{
         type: "spring",
-        stiffness: 70,
+        stiffness: 75,
         damping: 15,
         duration: 0.3,
       }}

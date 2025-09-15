@@ -30,7 +30,7 @@ const Hero = () => {
       {/* <div className="absolute w-[400px] h-[400px] bg-purple-700/30 rounded-full -right-32 -top-32 blur-3xl animate-blob"></div> */}
 
       {/* Text Content */}
-      <div className="relative container mx-auto px-6 items-center justify-between z-10">
+      <div className="relative container mx-auto px-6 items-center justify-between">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -62,7 +62,7 @@ const Hero = () => {
       </motion.div>
 
       {/* Portfolio preview */}
-      <div className="absolute right-32 bottom-32 space-y-20 max-md:hidden">
+      <div className="absolute right-32 bottom-32 space-y-20 max-md:hidden z-10">
         <PortfolioPrev />
         <InterfacesBlock />
       </div>

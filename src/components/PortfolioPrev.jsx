@@ -1,8 +1,12 @@
 import { motion } from "motion/react";
 import PortfolioStripes from "../assets/portfolio_prev_stripes.svg";
 import AnyfabPic from "../assets/images/Anyfab.png";
+import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const PortfolioPrev = () => {
+  const navigate = useNavigate();
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 50 }}
@@ -38,7 +42,8 @@ export const PortfolioPrev = () => {
         <img
           src={AnyfabPic}
           alt="Portfolio preview"
-          className="pl-6 md:w-[175px] lg:w-[275px] xl:w-[350px] 2xl:w-[375px] h-auto relative z-10"
+          onClick={() => navigate("/portfolio")}
+          className="pl-6 md:w-[175px] lg:w-[275px] xl:w-[350px] 2xl:w-[375px] h-auto relative z-10 cursor-pointer pointer-events-auto transition-transform duration-300 ease-in-out hover:scale-110"
         />
       </div>
     </motion.div>

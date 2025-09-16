@@ -101,3 +101,7 @@ img {
     user-select: none;
     pointer-events: none;
 }
+
+body {
+    cursor: none;
+}

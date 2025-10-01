@@ -1,4 +1,3 @@
-import BackgroundOverlay from "./assets/svg/BackgroundOverlay";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "motion/react";
 import Hero from "./components/Hero";

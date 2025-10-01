@@ -1,4 +1,3 @@
-import React from "react";
 import ContactTerminal from "../components/ContactTerminal";
 
 const Contact = () => {

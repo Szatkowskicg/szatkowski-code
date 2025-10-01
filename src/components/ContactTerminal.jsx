@@ -1,100 +1,123 @@
-import { useState } from "react";
-import { motion } from "motion/react";
+import { useState, useEffect, useRef } from "react";
+import { motion, useDragControls } from "motion/react";
 
 export default function ContactTerminal() {
-  const [step, setStep] = useState(0);
-  const [formData, setFormData] = useState({
-    email: "",
-    message: "",
-    phone: "",
-  });
+  const [lines, setLines] = useState([]);
+  const [input, setInput] = useState("");
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [currentText, setCurrentText] = useState("");
+  const [charIndex, setCharIndex] = useState(0);
+  const inputRef = useRef(null);
+  const dragControls = useDragControls();
 
-  const handleNext = () => setStep((prev) => prev + 1);
+  const introLines = [
+    "##############################################",
+    "#                                            #",
+    "#            example digital ASCII           #",
+    "#                                            #",
+    "##############################################",
+    "Welcome to my contact terminal",
+    "If you want to write to me just press enter",
+  ];
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  // Typewriter effect
+  useEffect(() => {
+    if (currentLineIndex < introLines.length) {
+      if (charIndex < introLines[currentLineIndex].length) {
+        const timeout = setTimeout(() => {
+          setCurrentText(
+            (prev) => prev + introLines[currentLineIndex][charIndex]
+          );
+          setCharIndex((prev) => prev + 1);
+        }, 30);
+        return () => clearTimeout(timeout);
+      } else {
+        setLines((prev) => [...prev, { type: "output", text: currentText }]);
+        setCurrentText("");
+        setCharIndex(0);
+        setCurrentLineIndex((prev) => prev + 1);
+      }
+    }
+  }, [charIndex, currentLineIndex]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Form submitted!\n" + JSON.stringify(formData, null, 2));
-    setStep(0);
-    setFormData({ email: "", message: "", phone: "" });
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      if (input.trim() === "") {
+        setLines((prev) => [
+          ...prev,
+          { type: "output", text: "Type 'contact' to get in touch." },
+        ]);
+      } else if (input.trim().toLowerCase() === "contact") {
+        setLines((prev) => [
+          ...prev,
+          { type: "output", text: "Opening contact form..." },
+        ]);
+      } else {
+        setLines((prev) => [
+          ...prev,
+          { type: "output", text: `command not found: ${input}` },
+        ]);
+      }
+      setInput("");
+    }
   };
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="bg-black text-green-400 font-mono p-6 rounded-lg shadow-lg max-w-xl mx-auto mt-10"
+      drag
+      dragListener={false}
+      dragControls={dragControls}
+      dragMomentum={false}
+      className="bg-[#101317] rounded-xl w-full max-w-3xl mx-auto"
     >
-      <div className="mb-4">
-        <p>$ Welcome to my contact terminal</p>
-        {step === 0 && (
-          <p className="animate-pulse">
-            $ If you want to write to me, just press Enter
-          </p>
-        )}
+      {/* Header / Drag handle */}
+      <div
+        className="flex flex-row space-x-2 px-2 justify-start items-center py-2"
+        onPointerDown={(e) => dragControls.start(e)}
+      >
+        <div className="bg-color-3/70 rounded-full h-3 w-3"></div>
+        <div className="bg-color-2/70 rounded-full h-3 w-3"></div>
+        <div className="bg-color-1/70 rounded-full h-3 w-3"></div>
+        <div className="flex-1 text-center items-center justify-center">
+          <p className="text-xs text-white/70">root@contact</p>
+        </div>
       </div>
 
-      {step === 1 && (
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-green-400 mb-1">$ Email:</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full bg-black border border-green-400 text-green-400 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-600"
-              placeholder="you@example.com"
-              required
-            />
+      {/* Terminal Body */}
+      <div
+        className="bg-[#161B22] text-white font-mono p-4 rounded-b-xl shadow-lg w-full max-w-3xl mx-auto h-[600px] overflow-y-auto"
+        onClick={() => inputRef.current.focus()}
+      >
+        {lines.map((line, i) => (
+          <div key={i}>
+            <span className="text-color-2">szatkowski-digital</span>:
+            <span className="text-color-1">~$</span> {line.text}
           </div>
+        ))}
 
+        {currentText && (
           <div>
-            <label className="block text-green-400 mb-1">$ Message:</label>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              className="w-full bg-black border border-green-400 text-green-400 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-600"
-              placeholder="Write your message here..."
-              required
-            />
+            <span className="text-color-2">szatkowski-digital</span>:
+            <span className="text-color-1">~$</span> {currentText}
           </div>
+        )}
 
-          <div>
-            <label className="block text-green-400 mb-1">
-              $ Phone (optional):
-            </label>
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="w-full bg-black border border-green-400 text-green-400 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-600"
-              placeholder="+1234567890"
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="bg-green-400 text-black px-4 py-2 rounded hover:bg-green-500 transition"
-          >
-            $ Submit
-          </button>
-        </form>
-      )}
-
-      {step === 0 && (
-        <button
-          onClick={handleNext}
-          className="mt-4 bg-green-400 text-black px-4 py-2 rounded hover:bg-green-500 transition"
-        >
-          Enter
-        </button>
-      )}
+        {/* Input line */}
+        <div className="flex">
+          <span className="text-color-2">szatkowski-digital</span>:
+          <span className="text-color-1">~$</span>
+          <input
+            ref={inputRef}
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="bg-transparent outline-none border-none text-white ml-2 flex-1"
+            autoFocus
+          />
+          <span className="animate-pulse">█</span>
+        </div>
+      </div>
     </motion.div>
   );
 }

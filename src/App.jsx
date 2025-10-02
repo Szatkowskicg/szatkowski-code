@@ -28,7 +28,6 @@ const App = () => {
       <CustomCursor />
       <Header />
       <AnimatedRoutes />
-      {/* <BackgroundOverlay /> */}
     </div>
   );
 };

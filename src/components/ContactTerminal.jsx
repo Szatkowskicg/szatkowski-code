@@ -20,7 +20,6 @@ export default function ContactTerminal() {
     "If you want to write to me just press enter",
   ];
 
-  // Typewriter effect
   useEffect(() => {
     if (currentLineIndex < introLines.length) {
       if (charIndex < introLines[currentLineIndex].length) {

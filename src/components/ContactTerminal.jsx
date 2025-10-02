@@ -52,6 +52,18 @@ export default function ContactTerminal() {
           ...prev,
           { type: "output", text: "Opening contact form..." },
         ]);
+      } else if (input.trim().toLowerCase() === "whoami") {
+        setLines((prev) => [
+          ...prev,
+          { type: "output", text: "Wonderfull person <3" },
+        ]);
+      } else if (input.trim().toLowerCase() === "help") {
+        setLines((prev) => [...prev, { type: "output", text: "help info" }]);
+      } else if (input.trim().toLowerCase() === "cd") {
+        setLines((prev) => [
+          ...prev,
+          { type: "output", text: "Directory secured can't move" },
+        ]);
       } else {
         setLines((prev) => [
           ...prev,
@@ -68,7 +80,7 @@ export default function ContactTerminal() {
       dragListener={false}
       dragControls={dragControls}
       dragMomentum={false}
-      className="bg-[#101317] rounded-xl w-full max-w-3xl mx-auto"
+      className="bg-[#101317]/30 rounded-xl w-full max-w-3xl mx-auto"
     >
       {/* Header / Drag handle */}
       <div
@@ -95,12 +107,7 @@ export default function ContactTerminal() {
           </div>
         ))}
 
-        {currentText && (
-          <div>
-            <span className="text-color-2">szatkowski-digital</span>:
-            <span className="text-color-1">~$</span> {currentText}
-          </div>
-        )}
+        {currentText && <div>{currentText}</div>}
 
         {/* Input line */}
         <div className="flex">
@@ -115,7 +122,6 @@ export default function ContactTerminal() {
             className="bg-transparent outline-none border-none text-white ml-2 flex-1"
             autoFocus
           />
-          <span className="animate-pulse">█</span>
         </div>
       </div>
     </motion.div>

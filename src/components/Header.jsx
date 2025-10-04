@@ -11,6 +11,7 @@ const Header = () => {
   const { pathname } = useLocation();
   const [openNavigation, setOpenNavigation] = useState(false);
   const { scrollY } = useScroll();
+  const isDesktop = window.innerWidth >= 1024;
 
   const smoothScrollY = useSpring(scrollY, {
     stiffness: 200,

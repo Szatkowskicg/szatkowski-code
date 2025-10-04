@@ -90,10 +90,13 @@ export default function ContactTerminal() {
   };
 
   return (
-    <TerminalWindow title={"contact"}>
+    <TerminalWindow
+      title={"contact"}
+      className={"top-1/2 left-0 -translate-y-[40%] w-[60%] h-[80%]"}
+    >
       {/* Terminal Body */}
       <div
-        className="bg-[#161B22] text-white font-mono p-4 rounded-b-xl shadow-lg w-[800px] max-w-3xl mx-auto h-[600px] overflow-y-auto select-text"
+        className="bg-[#161B22] text-white font-mono p-4 mx-auto w-full h-full overflow-y-auto select-text"
         onClick={() => inputRef.current && inputRef.current.focus()}
       >
         {lines.map((line, i) => (

@@ -1,7 +1,11 @@
 import { motion, useDragControls } from "motion/react";
 
-const TerminalWindow = ({ title, children, delay = 0 }) => {
+const TerminalWindow = ({ title, children, delay = 0, className }) => {
   const dragControls = useDragControls();
+
+  const classes = `bg-[#101317] rounded-xl mx-auto select-none absolute overflow-hidden ${
+    className || ""
+  }`;
 
   return (
     <motion.div
@@ -17,7 +21,7 @@ const TerminalWindow = ({ title, children, delay = 0 }) => {
       dragListener={false}
       dragControls={dragControls}
       dragMomentum={false}
-      className="bg-[#101317] rounded-xl max-w-3xl mx-auto select-none absolute"
+      className={classes}
     >
       {/* Header / Drag handle */}
       <div

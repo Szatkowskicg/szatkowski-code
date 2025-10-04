@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, useDragControls } from "motion/react";
+import { motion } from "motion/react";
+import TerminalWindow from "./TerminalWindow";
 
 export default function ContactTerminal() {
   const [lines, setLines] = useState([]);
@@ -7,9 +8,8 @@ export default function ContactTerminal() {
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [charIndex, setCharIndex] = useState(0);
+  const [introDone, setIntroDone] = useState(false);
   const inputRef = useRef(null);
-  const dragControls = useDragControls();
-
   const introLines = [
     "##############################################",
     "#                                            #",
@@ -28,7 +28,7 @@ export default function ContactTerminal() {
             (prev) => prev + introLines[currentLineIndex][charIndex]
           );
           setCharIndex((prev) => prev + 1);
-        }, 30);
+        }, 5);
         return () => clearTimeout(timeout);
       } else {
         setLines((prev) => [...prev, { type: "output", text: currentText }]);
@@ -36,37 +36,53 @@ export default function ContactTerminal() {
         setCharIndex(0);
         setCurrentLineIndex((prev) => prev + 1);
       }
+    } else if (!introDone) {
+      setIntroDone(true);
     }
   }, [charIndex, currentLineIndex]);
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      if (input.trim() === "") {
+    if (e.key === "Enter" && introDone) {
+      const trimmed = input.trim();
+      const mainCmd = trimmed.split(" ")[0].toLowerCase();
+
+      if (trimmed === "") {
         setLines((prev) => [
           ...prev,
+          { type: "input", text: input },
           { type: "output", text: "Type 'contact' to get in touch." },
         ]);
-      } else if (input.trim().toLowerCase() === "contact") {
+      } else if (mainCmd === "clear") {
+        setLines([]);
+      } else if (mainCmd === "contact") {
         setLines((prev) => [
           ...prev,
+          { type: "input", text: input },
           { type: "output", text: "Opening contact form..." },
         ]);
-      } else if (input.trim().toLowerCase() === "whoami") {
+      } else if (mainCmd === "whoami") {
         setLines((prev) => [
           ...prev,
+          { type: "input", text: input },
           { type: "output", text: "Wonderfull person <3" },
         ]);
-      } else if (input.trim().toLowerCase() === "help") {
-        setLines((prev) => [...prev, { type: "output", text: "help info" }]);
-      } else if (input.trim().toLowerCase() === "cd") {
+      } else if (mainCmd === "help") {
         setLines((prev) => [
           ...prev,
+          { type: "input", text: input },
+          { type: "output", text: "help info" },
+        ]);
+      } else if (mainCmd === "cd") {
+        setLines((prev) => [
+          ...prev,
+          { type: "input", text: input },
           { type: "output", text: "Directory secured can't move" },
         ]);
       } else {
         setLines((prev) => [
           ...prev,
-          { type: "output", text: `command not found: ${input}` },
+          { type: "input", text: input },
+          { type: "output", text: `command not found: ${mainCmd}` },
         ]);
       }
       setInput("");
@@ -74,55 +90,44 @@ export default function ContactTerminal() {
   };
 
   return (
-    <motion.div
-      drag
-      dragListener={false}
-      dragControls={dragControls}
-      dragMomentum={false}
-      className="bg-[#101317]/30 rounded-xl w-full max-w-3xl mx-auto"
-    >
-      {/* Header / Drag handle */}
-      <div
-        className="flex flex-row space-x-2 px-2 justify-start items-center py-2"
-        onPointerDown={(e) => dragControls.start(e)}
-      >
-        <div className="bg-color-3/70 rounded-full h-3 w-3"></div>
-        <div className="bg-color-2/70 rounded-full h-3 w-3"></div>
-        <div className="bg-color-1/70 rounded-full h-3 w-3"></div>
-        <div className="flex-1 text-center items-center justify-center">
-          <p className="text-xs text-white/70">root@contact</p>
-        </div>
-      </div>
-
+    <TerminalWindow title={"contact"}>
       {/* Terminal Body */}
       <div
-        className="bg-[#161B22] text-white font-mono p-4 rounded-b-xl shadow-lg w-full max-w-3xl mx-auto h-[600px] overflow-y-auto"
-        onClick={() => inputRef.current.focus()}
+        className="bg-[#161B22] text-white font-mono p-4 rounded-b-xl shadow-lg w-[800px] max-w-3xl mx-auto h-[600px] overflow-y-auto select-text"
+        onClick={() => inputRef.current && inputRef.current.focus()}
       >
         {lines.map((line, i) => (
           <div key={i}>
-            <span className="text-color-2">szatkowski-digital</span>:
-            <span className="text-color-1">~$</span> {line.text}
+            {line.type === "input" ? (
+              <div>
+                <span className="text-color-2">szatkowski-digital</span>:
+                <span className="text-color-1">~$</span> {line.text}
+              </div>
+            ) : (
+              <div>{line.text}</div>
+            )}
           </div>
         ))}
 
         {currentText && <div>{currentText}</div>}
 
-        {/* Input line */}
-        <div className="flex">
-          <span className="text-color-2">szatkowski-digital</span>:
-          <span className="text-color-1">~$</span>
-          <input
-            ref={inputRef}
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="bg-transparent outline-none border-none text-white ml-2 flex-1"
-            autoFocus
-          />
-        </div>
+        {/* Input line – pokazuj dopiero po intro */}
+        {introDone && (
+          <div className="flex">
+            <span className="text-color-2">szatkowski-digital</span>:
+            <span className="text-color-1">~$</span>
+            <input
+              ref={inputRef}
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="bg-transparent outline-none border-none text-white ml-2 flex-1"
+              autoFocus
+            />
+          </div>
+        )}
       </div>
-    </motion.div>
+    </TerminalWindow>
   );
 }

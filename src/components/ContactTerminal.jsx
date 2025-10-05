@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { asciiArt } from "../constants";
 
-export default function ContactTerminal({ onOpenContact, onContactClose }) {
+export default function ContactTerminal({ onOpenContact, formActive }) {
   const [lines, setLines] = useState([]);
   const [input, setInput] = useState("");
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
@@ -26,7 +26,6 @@ export default function ContactTerminal({ onOpenContact, onContactClose }) {
     { type: "output", text: "Success! Contact form is ready." },
     { type: "output", text: "..." },
   ];
-
   const startupLines = [...asciiArtLines, ...introLines];
 
   useEffect(() => {
@@ -42,7 +41,7 @@ export default function ContactTerminal({ onOpenContact, onContactClose }) {
   }, [currentLineIndex, introDone, startupLines]);
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter" && introDone && !contactMode) {
+    if (e.key === "Enter" && introDone && !formActive && !contactMode) {
       const cmd = input.trim().toLowerCase().split(" ")[0];
       const add = (out) =>
         setLines((prev) =>
@@ -53,8 +52,8 @@ export default function ContactTerminal({ onOpenContact, onContactClose }) {
         add({ type: "output", text: "Type 'contact' to get in touch." });
       else if (cmd === "clear") setLines([]);
       else if (cmd === "contact") {
-        add({ type: "output", text: "Opening contact form..." });
         setContactMode(true);
+        add({ type: "output", text: "Opening contact form..." });
 
         contactOpening.forEach((l, i) =>
           setTimeout(() => setLines((p) => [...p, l]), 400 * (i + 1))
@@ -62,6 +61,7 @@ export default function ContactTerminal({ onOpenContact, onContactClose }) {
 
         setTimeout(() => {
           onOpenContact?.();
+          setContactMode(false);
         }, contactOpening.length * 400 + 300);
       } else if (cmd === "whoami")
         add({ type: "output", text: "Wonderful person <3" });
@@ -74,27 +74,9 @@ export default function ContactTerminal({ onOpenContact, onContactClose }) {
     }
   };
 
-  const handleContactClose = (success) => {
-    setLines((prev) => [
-      ...prev,
-      {
-        type: "output",
-        text: success
-          ? "Message sent successfully."
-          : "Message not sent. Contact closed.",
-      },
-    ]);
-
-    // włączamy ponownie contactMode (blokuje input)
-    setContactMode(false);
-
-    // powiadamiamy Contact.jsx, jeśli potrzebne
-    onContactClose?.(success);
-  };
-
   return (
     <div
-      className="bg-[#161B22] text-white font-mono p-4 mx-auto w-full h-full overflow-y-auto select-text"
+      className="bg-[#161B22]/90 text-white font-mono p-4 mx-auto w-full h-full overflow-y-auto select-text"
       onClick={() => inputRef.current?.focus()}
     >
       {lines.map((line, i) => (
@@ -117,7 +99,7 @@ export default function ContactTerminal({ onOpenContact, onContactClose }) {
         </div>
       ))}
 
-      {introDone && !contactMode && (
+      {introDone && !formActive && !contactMode && (
         <div className="flex">
           <span className="text-color-2">szatkowski-digital</span>:
           <span className="text-color-1">~$</span>

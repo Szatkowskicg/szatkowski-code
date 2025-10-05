@@ -6,8 +6,7 @@ const Contact = () => {
   const [showContactForm, setShowContactForm] = useState(false);
 
   const openContactForm = () => setShowContactForm(true);
-
-  const handleFormClose = (success) => {
+  const closeContactForm = () => {
     setShowContactForm(false);
   };
 
@@ -19,7 +18,10 @@ const Contact = () => {
           className={"w-2/3 h-full"}
           delay={0.2}
         >
-          <ContactTerminal onOpenContact={openContactForm} />
+          <ContactTerminal
+            onOpenContact={openContactForm}
+            formActive={showContactForm}
+          />
         </TerminalWindow>
 
         <div className="flex flex-col w-1/3 h-full gap-10">
@@ -28,7 +30,7 @@ const Contact = () => {
             className={"w-full h-1/2"}
             delay={0.3}
           >
-            <div className="h-full w-full bg-black"></div>
+            <div className="h-full w-full bg-[#161B22]/90"></div>
           </TerminalWindow>
 
           <TerminalWindow
@@ -36,13 +38,13 @@ const Contact = () => {
             className={"w-full h-1/2"}
             delay={0.4}
           >
-            <div className="h-full w-full bg-black"></div>
+            <div className="h-full w-full bg-[#161B22]/90"></div>
           </TerminalWindow>
         </div>
       </div>
 
       {showContactForm && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-50">
+        <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-10">
           <TerminalWindow
             title={"Contact Form"}
             className={"w-3/4 h-3/4"}
@@ -54,13 +56,13 @@ const Contact = () => {
               </p>
               <div className="flex gap-4">
                 <button
-                  onClick={() => handleFormClose(true)}
+                  onClick={() => closeContactForm()}
                   className="px-4 py-2 bg-green-600 text-white rounded"
                 >
                   Send
                 </button>
                 <button
-                  onClick={() => handleFormClose(false)}
+                  onClick={() => closeContactForm()}
                   className="px-4 py-2 bg-red-600 text-white rounded"
                 >
                   Close

@@ -3,7 +3,7 @@ import { motion, useDragControls } from "motion/react";
 const TerminalWindow = ({ title, children, delay = 0, className }) => {
   const dragControls = useDragControls();
 
-  const classes = `relative bg-[#101317] rounded-xl mx-auto select-none overflow-hidden ${
+  const classes = `flex flex-col rounded-xl mx-auto select-none overflow-hidden ${
     className || ""
   }`;
 
@@ -25,7 +25,7 @@ const TerminalWindow = ({ title, children, delay = 0, className }) => {
     >
       {/* Header / Drag handle */}
       <div
-        className="flex flex-row space-x-2 px-2 justify-start items-center py-2"
+        className="flex flex-row bg-[#101317] space-x-2 px-2 justify-start items-center py-2"
         onPointerDown={(e) => dragControls.start(e)}
       >
         <div className="bg-color-3/60 rounded-full h-3 w-3"></div>

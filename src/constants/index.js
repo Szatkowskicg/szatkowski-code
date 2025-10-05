@@ -106,9 +106,7 @@ export const asciiArt = `
                     __/ |                                  
                    |___/                                   
                    
-Welcome to my contact terminal!
-.
-If you want to write to me just type 'contact' and press enter
+
 `;
 
 // export const heroIcons = [homeSmile, file02, searchMd, plusSquare];

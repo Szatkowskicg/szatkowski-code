@@ -1,115 +1,123 @@
 import { useState, useEffect, useRef } from "react";
-import { motion } from "motion/react";
-import TerminalWindow from "./TerminalWindow";
 import { asciiArt } from "../constants";
 
-export default function ContactTerminal() {
+export default function ContactTerminal({ onOpenContact, onContactClose }) {
   const [lines, setLines] = useState([]);
   const [input, setInput] = useState("");
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
-  const [currentText, setCurrentText] = useState("");
-  const [charIndex, setCharIndex] = useState(0);
   const [introDone, setIntroDone] = useState(false);
+  const [contactMode, setContactMode] = useState(false);
   const inputRef = useRef(null);
 
-  const asciiArtLines = asciiArt.split("\n");
-
+  const asciiArtLines = asciiArt
+    .split("\n")
+    .map((t) => ({ type: "ascii", text: t }));
   const introLines = [
-    "Welcome to my contact terminal",
-    "If you want to write to me just press enter",
+    { type: "intro", text: "Welcome to my contact terminal" },
+    {
+      type: "intro",
+      text: "If you want to write to me just type 'contact' press enter",
+    },
+  ];
+  const contactOpening = [
+    { type: "output", text: "Loading contact module..." },
+    { type: "output", text: "Initializing secure channel" },
+    { type: "output", text: "Connecting to szatkowski-digital" },
+    { type: "output", text: "Success! Contact form is ready." },
+    { type: "output", text: "..." },
   ];
 
+  const startupLines = [...asciiArtLines, ...introLines];
+
   useEffect(() => {
-    if (currentLineIndex < asciiArtLines.length) {
-      if (charIndex < asciiArtLines[currentLineIndex].length) {
-        const timeout = setTimeout(() => {
-          setCurrentText(
-            (prev) => prev + asciiArtLines[currentLineIndex][charIndex]
-          );
-          setCharIndex((prev) => prev + 1);
-        }, 2);
-        return () => clearTimeout(timeout);
-      } else {
-        setLines((prev) => [...prev, { type: "output", text: currentText }]);
-        setCurrentText("");
-        setCharIndex(0);
-        setCurrentLineIndex((prev) => prev + 1);
-      }
+    if (currentLineIndex < startupLines.length) {
+      const timeout = setTimeout(() => {
+        setLines((prev) => [...prev, startupLines[currentLineIndex]]);
+        setCurrentLineIndex((i) => i + 1);
+      }, 20);
+      return () => clearTimeout(timeout);
     } else if (!introDone) {
       setIntroDone(true);
     }
-  }, [charIndex, currentLineIndex]);
+  }, [currentLineIndex, introDone, startupLines]);
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter" && introDone) {
-      const trimmed = input.trim();
-      const mainCmd = trimmed.split(" ")[0].toLowerCase();
+    if (e.key === "Enter" && introDone && !contactMode) {
+      const cmd = input.trim().toLowerCase().split(" ")[0];
+      const add = (out) =>
+        setLines((prev) =>
+          [...prev, { type: "input", text: input }, out].filter(Boolean)
+        );
 
-      if (trimmed === "") {
-        setLines((prev) => [
-          ...prev,
-          { type: "input", text: input },
-          { type: "output", text: "Type 'contact' to get in touch." },
-        ]);
-      } else if (mainCmd === "clear") {
-        setLines([]);
-      } else if (mainCmd === "contact") {
-        setLines((prev) => [
-          ...prev,
-          { type: "input", text: input },
-          { type: "output", text: "Opening contact form..." },
-        ]);
-      } else if (mainCmd === "whoami") {
-        setLines((prev) => [
-          ...prev,
-          { type: "input", text: input },
-          { type: "output", text: "Wonderfull person <3" },
-        ]);
-      } else if (mainCmd === "help") {
-        setLines((prev) => [
-          ...prev,
-          { type: "input", text: input },
-          { type: "output", text: "help info" },
-        ]);
-      } else if (mainCmd === "cd") {
-        setLines((prev) => [
-          ...prev,
-          { type: "input", text: input },
-          { type: "output", text: "Directory secured can't move" },
-        ]);
-      } else {
-        setLines((prev) => [
-          ...prev,
-          { type: "input", text: input },
-          { type: "output", text: `command not found: ${mainCmd}` },
-        ]);
-      }
+      if (!cmd)
+        add({ type: "output", text: "Type 'contact' to get in touch." });
+      else if (cmd === "clear") setLines([]);
+      else if (cmd === "contact") {
+        add({ type: "output", text: "Opening contact form..." });
+        setContactMode(true);
+
+        contactOpening.forEach((l, i) =>
+          setTimeout(() => setLines((p) => [...p, l]), 400 * (i + 1))
+        );
+
+        setTimeout(() => {
+          onOpenContact?.();
+        }, contactOpening.length * 400 + 300);
+      } else if (cmd === "whoami")
+        add({ type: "output", text: "Wonderful person <3" });
+      else if (cmd === "help") add({ type: "output", text: "help info" });
+      else if (cmd === "cd")
+        add({ type: "output", text: "Directory secured, can't move" });
+      else add({ type: "output", text: `command not found: ${cmd}` });
+
       setInput("");
     }
+  };
+
+  const handleContactClose = (success) => {
+    setLines((prev) => [
+      ...prev,
+      {
+        type: "output",
+        text: success
+          ? "Message sent successfully."
+          : "Message not sent. Contact closed.",
+      },
+    ]);
+
+    // włączamy ponownie contactMode (blokuje input)
+    setContactMode(false);
+
+    // powiadamiamy Contact.jsx, jeśli potrzebne
+    onContactClose?.(success);
   };
 
   return (
     <div
       className="bg-[#161B22] text-white font-mono p-4 mx-auto w-full h-full overflow-y-auto select-text"
-      onClick={() => inputRef.current && inputRef.current.focus()}
+      onClick={() => inputRef.current?.focus()}
     >
       {lines.map((line, i) => (
-        <div key={i}>
+        <div
+          key={i}
+          className={
+            line.type === "ascii"
+              ? "whitespace-pre leading-none"
+              : "whitespace-pre-wrap leading-normal"
+          }
+        >
           {line.type === "input" ? (
-            <div>
+            <>
               <span className="text-color-2">szatkowski-digital</span>:
               <span className="text-color-1">~$</span> {line.text}
-            </div>
+            </>
           ) : (
-            <div className="whitespace-pre-wrap leading-none">{line.text}</div>
+            line.text
           )}
         </div>
       ))}
 
-      {currentText && <div>{currentText}</div>}
-
-      {/* Input line – pokazuj dopiero po intro */}
-      {introDone && (
+      {introDone && !contactMode && (
         <div className="flex">
           <span className="text-color-2">szatkowski-digital</span>:
           <span className="text-color-1">~$</span>

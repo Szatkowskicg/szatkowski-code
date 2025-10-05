@@ -3,7 +3,7 @@ import { motion, useDragControls } from "motion/react";
 const TerminalWindow = ({ title, children, delay = 0, className }) => {
   const dragControls = useDragControls();
 
-  const classes = `bg-[#101317] rounded-xl mx-auto select-none absolute overflow-hidden ${
+  const classes = `relative bg-[#101317] rounded-xl mx-auto select-none overflow-hidden ${
     className || ""
   }`;
 

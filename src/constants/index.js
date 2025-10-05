@@ -1,13 +1,7 @@
 import PlIcon from "../assets/images/polish_icon.png";
 import EngIcon from "../assets/images/english_icon.png";
 import { Github, Linkedin, Instagram, Facebook } from "lucide-react";
-import {
-  CircleCheckBig,
-  CodeXml,
-  Server,
-  Bot,
-  ShieldCheck,
-} from "lucide-react";
+import { CodeXml, Server, Bot, ShieldCheck } from "lucide-react";
 
 export const navigation = [
   {
@@ -95,6 +89,27 @@ export const portfolioCTA = {
    Here’s mine.`,
   button: "Portfolio",
 };
+
+export const asciiArt = `
+
+                     _   _                     _    _      
+                    | | | |                   | |  (_)     
+        ___ ______ _| |_| | _______      _____| | ___      
+       / __|_  / _\` | __| |/ / _ \\ \\ /\\ / / __| |/ / |     
+       \\__ \\/ / (_| | |_|   < (_) \\ V  V /\\__ \\   <| |     
+       |___/___\\__,_|\\__|_|\\_\\___/ \\_/\\_/ |___/_|\\_\\_|     
+         / /  | (_)     (_) |      | |   / /\\ \\            
+        / / __| |_  __ _ _| |_ __ _| |  / /  \\ \\           
+       < < / _\` | |/ _\` | | __/ _\` | | / /    > >          
+        \\ \\ (_| | | (_| | | || (_| | |/ /    / /           
+         \\_\\__,_|_|\\__, |_|\\__\\__,_|_/_/    /_/            
+                    __/ |                                  
+                   |___/                                   
+                   
+Welcome to my contact terminal!
+.
+If you want to write to me just type 'contact' and press enter
+`;
 
 // export const heroIcons = [homeSmile, file02, searchMd, plusSquare];
 

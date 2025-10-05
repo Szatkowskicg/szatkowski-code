@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import TerminalWindow from "./TerminalWindow";
+import { asciiArt } from "../constants";
 
 export default function ContactTerminal() {
   const [lines, setLines] = useState([]);
@@ -10,25 +11,23 @@ export default function ContactTerminal() {
   const [charIndex, setCharIndex] = useState(0);
   const [introDone, setIntroDone] = useState(false);
   const inputRef = useRef(null);
+
+  const asciiArtLines = asciiArt.split("\n");
+
   const introLines = [
-    "##############################################",
-    "#                                            #",
-    "#            example digital ASCII           #",
-    "#                                            #",
-    "##############################################",
     "Welcome to my contact terminal",
     "If you want to write to me just press enter",
   ];
 
   useEffect(() => {
-    if (currentLineIndex < introLines.length) {
-      if (charIndex < introLines[currentLineIndex].length) {
+    if (currentLineIndex < asciiArtLines.length) {
+      if (charIndex < asciiArtLines[currentLineIndex].length) {
         const timeout = setTimeout(() => {
           setCurrentText(
-            (prev) => prev + introLines[currentLineIndex][charIndex]
+            (prev) => prev + asciiArtLines[currentLineIndex][charIndex]
           );
           setCharIndex((prev) => prev + 1);
-        }, 5);
+        }, 2);
         return () => clearTimeout(timeout);
       } else {
         setLines((prev) => [...prev, { type: "output", text: currentText }]);
@@ -90,47 +89,41 @@ export default function ContactTerminal() {
   };
 
   return (
-    <TerminalWindow
-      title={"contact"}
-      className={"top-1/2 left-0 -translate-y-[40%] w-[60%] h-[80%]"}
+    <div
+      className="bg-[#161B22] text-white font-mono p-4 mx-auto w-full h-full overflow-y-auto select-text"
+      onClick={() => inputRef.current && inputRef.current.focus()}
     >
-      {/* Terminal Body */}
-      <div
-        className="bg-[#161B22] text-white font-mono p-4 mx-auto w-full h-full overflow-y-auto select-text"
-        onClick={() => inputRef.current && inputRef.current.focus()}
-      >
-        {lines.map((line, i) => (
-          <div key={i}>
-            {line.type === "input" ? (
-              <div>
-                <span className="text-color-2">szatkowski-digital</span>:
-                <span className="text-color-1">~$</span> {line.text}
-              </div>
-            ) : (
-              <div>{line.text}</div>
-            )}
-          </div>
-        ))}
+      {lines.map((line, i) => (
+        <div key={i}>
+          {line.type === "input" ? (
+            <div>
+              <span className="text-color-2">szatkowski-digital</span>:
+              <span className="text-color-1">~$</span> {line.text}
+            </div>
+          ) : (
+            <div className="whitespace-pre-wrap leading-none">{line.text}</div>
+          )}
+        </div>
+      ))}
 
-        {currentText && <div>{currentText}</div>}
+      {currentText && <div>{currentText}</div>}
 
-        {/* Input line – pokazuj dopiero po intro */}
-        {introDone && (
-          <div className="flex">
-            <span className="text-color-2">szatkowski-digital</span>:
-            <span className="text-color-1">~$</span>
-            <input
-              ref={inputRef}
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              className="bg-transparent outline-none border-none text-white ml-2 flex-1"
-              autoFocus
-            />
-          </div>
-        )}
-      </div>
-    </TerminalWindow>
+      {/* Input line – pokazuj dopiero po intro */}
+      {introDone && (
+        <div className="flex">
+          <span className="text-color-2">szatkowski-digital</span>:
+          <span className="text-color-1">~$</span>
+          <input
+            ref={inputRef}
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="bg-transparent outline-none border-none text-white ml-2 flex-1"
+            autoFocus
+          />
+        </div>
+      )}
+    </div>
   );
 }

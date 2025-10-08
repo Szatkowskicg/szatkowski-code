@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import myImage from "../../assets/images/smokins_app_1.png";
 import myImage2 from "../../assets/images/smokins_app_2.png";

@@ -109,7 +109,7 @@ export default function ContactTerminal({ onOpenContact, formActive }) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="bg-transparent outline-none border-none text-white ml-2 flex-1"
+            className="bg-transparent outline-none border-none text-white ml-2 flex-1 pb-48"
             autoFocus
           />
         </div>

@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ContactTerminal from "../components/ContactTerminal";
 import TerminalWindow from "../components/TerminalWindow";
+import { TerminalBoot, TerminalLogo } from "../components/design/Terminals";
 
 const Contact = () => {
+  const containerRef = useRef(null);
   const [showContactForm, setShowContactForm] = useState(false);
+  const [activeId, setActiveId] = useState(null);
 
   const openContactForm = () => setShowContactForm(true);
   const closeContactForm = () => {
@@ -12,9 +15,16 @@ const Contact = () => {
 
   return (
     <div className="relative w-full h-screen md:h-[100dvh] pt-[5.5rem] md:pt-[7.25rem] overflow-hidden">
-      <div className="h-full w-full flex flex-row gap-10 px-24 py-12">
+      <div
+        ref={containerRef}
+        className="h-full w-full flex flex-row gap-10 px-24 py-12"
+      >
         <TerminalWindow
-          title={"contact"}
+          id="contact"
+          title="contact"
+          isActive={activeId === "contact"}
+          dragContainer={containerRef}
+          onActivate={() => setActiveId("contact")}
           className={"w-2/3 h-full"}
           delay={0.2}
         >
@@ -26,19 +36,27 @@ const Contact = () => {
 
         <div className="flex flex-col w-1/3 h-full gap-10">
           <TerminalWindow
-            title={"scScan"}
+            id="takeover"
+            title="takeover"
+            isActive={activeId === "takeover"}
+            dragContainer={containerRef}
+            onActivate={() => setActiveId("takeover")}
             className={"w-full h-1/2"}
             delay={0.3}
           >
-            <div className="h-full w-full bg-[#161B22]/90"></div>
+            <TerminalLogo />
           </TerminalWindow>
 
           <TerminalWindow
-            title={"zshrc"}
+            id="boot"
+            title="boot"
+            isActive={activeId === "boot"}
+            dragContainer={containerRef}
+            onActivate={() => setActiveId("boot")}
             className={"w-full h-1/2"}
             delay={0.4}
           >
-            <div className="h-full w-full bg-[#161B22]/90"></div>
+            <TerminalBoot />
           </TerminalWindow>
         </div>
       </div>

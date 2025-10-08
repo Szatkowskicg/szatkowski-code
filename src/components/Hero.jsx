@@ -4,6 +4,7 @@ import Button from "./Button";
 import PortfolioPrev from "./PortfolioPrev";
 import InterfacesBlock from "./PortfolioInterfaces";
 import SocialsHero from "./SocialsHero";
+import GlitchImage from "./GlitchImage";
 
 const Hero = () => {
   const gradient =
@@ -54,7 +55,7 @@ const Hero = () => {
         transition={{ duration: 0.8 }}
         className="absolute left-1/2 -translate-x-1/2 bottom-0 md:ml-[-100px] lg:ml-[-125px] xl:ml-[-150px] 2xl:ml-[-160px]"
       >
-        <img
+        <GlitchImage
           src={heroImage}
           alt="Hero"
           className="w-full md:w-[200px] lg:w-[250px] xl:w-[300px] 2xl:w-[320px]"

@@ -6,7 +6,6 @@ import { TerminalBoot, TerminalLogo } from "../components/design/Terminals";
 const Contact = () => {
   const containerRef = useRef(null);
   const [showContactForm, setShowContactForm] = useState(false);
-  const [activeId, setActiveId] = useState(null);
 
   const openContactForm = () => setShowContactForm(true);
   const closeContactForm = () => {
@@ -22,9 +21,6 @@ const Contact = () => {
         <TerminalWindow
           id="contact"
           title="contact"
-          isActive={activeId === "contact"}
-          dragContainer={containerRef}
-          onActivate={() => setActiveId("contact")}
           className={"w-2/3 h-full"}
           delay={0.2}
         >
@@ -38,9 +34,6 @@ const Contact = () => {
           <TerminalWindow
             id="takeover"
             title="takeover"
-            isActive={activeId === "takeover"}
-            dragContainer={containerRef}
-            onActivate={() => setActiveId("takeover")}
             className={"w-full h-1/2"}
             delay={0.3}
           >
@@ -50,9 +43,6 @@ const Contact = () => {
           <TerminalWindow
             id="boot"
             title="boot"
-            isActive={activeId === "boot"}
-            dragContainer={containerRef}
-            onActivate={() => setActiveId("boot")}
             className={"w-full h-1/2"}
             delay={0.4}
           >

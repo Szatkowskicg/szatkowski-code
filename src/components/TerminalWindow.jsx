@@ -1,42 +1,29 @@
 import { motion, useDragControls } from "motion/react";
 
-const TerminalWindow = ({
-  id,
-  title,
-  children,
-  delay = 0,
-  className,
-  isActive,
-  onActivate,
-  dragContainer,
-}) => {
-  const dragControls = useDragControls();
-
+const TerminalWindow = ({ title, children, delay = 0, className }) => {
   const classes = `flex flex-col rounded-xl mx-auto select-none overflow-hidden ${
-    isActive
-      ? "border-color-2 shadow-color-2/50 z-10"
-      : "border-transparent z-0"
-  } ${className || ""}`;
+    className || ""
+  }`;
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 50, scale: 0.8 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.3, delay: delay }}
+      transition={{ duration: 0.3, delay }}
       exit={{
         opacity: 0,
         scale: 0.8,
         transition: { ease: "easeIn", duration: 0.3 },
       }}
       drag
-      dragListener={false}
-      dragControls={dragControls}
-      dragConstraints={dragContainer}
-      dragElastic={0}
-      dragTransition={{ power: 0, timeConstant: 0 }}
+      dragElastic={0.15}
+      dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
       dragMomentum={false}
+      dragTransition={{
+        bounceStiffness: 300,
+        bounceDamping: 25,
+      }}
       className={classes}
-      onPointerDown={onActivate}
     >
       {/* Header / Drag handle */}
       <div

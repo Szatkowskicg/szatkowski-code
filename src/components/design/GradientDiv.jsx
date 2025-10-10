@@ -34,7 +34,7 @@ const GradientDiv = ({
   };
 
   return (
-    <div className="relative -mx-20">
+    <div className="relative md:-mx-5 lg:-mx-10 2xl:-mx-20">
       {/* Fade gradient */}
       <div
         className={`${fadeClasses[fade]} bg-white z-10`}
@@ -48,7 +48,9 @@ const GradientDiv = ({
           style={{ background: gradients[gradient] }}
         />
 
-        <div className={`relative z-10 w-full py-20 px-20 ${className}`}>
+        <div
+          className={`relative z-10 w-full py-10 md:py-16 lg:py-24 xl:py-32 px-5 md:px-10 lg:px-20 ${className}`}
+        >
           {children}
         </div>
       </div>

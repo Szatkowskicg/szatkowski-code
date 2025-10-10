@@ -91,25 +91,33 @@ export default {
             {},
         },
         ".h1": {
-          "@apply font-semibold text-[1.75rem] leading-[2.5rem] md:text-[2.75rem] md:leading-[3.75rem] lg:text-[3.75rem] lg:leading-[4.5rem] xl:text-[5rem] xl:leading-[6rem]":
+          "@apply font-semibold text-[1.75rem] leading-[2.25rem] sm:text-[2rem] sm:leading-[2.75rem] md:text-[2.75rem] md:leading-[3.75rem] lg:text-[3.75rem] lg:leading-[4.5rem] xl:text-[5rem] xl:leading-[6rem]":
             {},
         },
+
         ".h2": {
-          "@apply font-semibold text-[1.75rem] leading-[2.5rem] md:text-[2rem] md:leading-[2.5rem] lg:text-[2.5rem] lg:leading-[3.5rem] xl:text-[3rem] xl:leading-tight":
+          "@apply font-semibold text-[1.5rem] leading-[2.25rem] sm:text-[1.75rem] sm:leading-[2.5rem] md:text-[2rem] md:leading-[2.5rem] lg:text-[2.5rem] lg:leading-[3.5rem] xl:text-[3rem] xl:leading-tight":
             {},
         },
+
         ".h3": {
-          "@apply font-semibold text-[2rem] leading-normal md:text-[2.5rem]":
+          "@apply font-semibold text-[1.25rem] leading-[1.85rem] sm:text-[1.5rem] sm:leading-[2rem] md:text-[2.5rem] md:leading-[3rem]":
             {},
         },
+
         ".h4": {
-          "@apply font-semibold text-[2rem] leading-normal": {},
+          "@apply font-semibold text-[1.125rem] leading-[1.75rem] sm:text-[1.25rem] sm:leading-[1.85rem] md:text-[1rem] md:leading-normal":
+            {},
         },
+
         ".h5": {
-          "@apply font-semibold text-xl leading-normal": {},
+          "@apply font-semibold text-[1rem] leading-[1.5rem] sm:text-xl sm:leading-[1.85rem]":
+            {},
         },
+
         ".h6": {
-          "@apply font-semibold text-lg leading-8": {},
+          "@apply font-semibold text-[0.875rem] leading-[1.5rem] sm:text-[1rem] sm:leading-[1.65rem]":
+            {},
         },
         ".body-1": {
           "@apply text-[0.875rem] leading-[1.5rem] md:text-[1rem] md:leading-[1.75rem] lg:text-[1.25rem] lg:leading-8":

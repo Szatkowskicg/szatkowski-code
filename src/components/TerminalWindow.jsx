@@ -1,6 +1,14 @@
 import { motion, useDragControls } from "motion/react";
 
-const TerminalWindow = ({ title, children, delay = 0, className }) => {
+const TerminalWindow = ({
+  title,
+  children,
+  delay = 0,
+  className,
+  dragContainer,
+}) => {
+  const dragControls = useDragControls();
+
   const classes = `flex flex-col rounded-xl mx-auto select-none overflow-hidden ${
     className || ""
   }`;
@@ -9,27 +17,28 @@ const TerminalWindow = ({ title, children, delay = 0, className }) => {
     <motion.div
       initial={{ opacity: 0, y: 50, scale: 0.8 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.3, delay }}
+      transition={{ duration: 0.3, delay: delay }}
       exit={{
         opacity: 0,
         scale: 0.8,
-        transition: { ease: "easeIn", duration: 0.3 },
+        transition: { ease: "easeIn", duration: 0.2 },
       }}
       drag
-      dragElastic={0.15}
+      dragListener={false}
+      dragControls={dragControls}
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-      dragMomentum={false}
+      dragElastic={0.15}
       dragTransition={{
         bounceStiffness: 300,
         bounceDamping: 25,
       }}
+      dragMomentum={false}
       className={classes}
     >
       {/* Header / Drag handle */}
       <div
         className="flex flex-row bg-[#101317] space-x-2 px-2 justify-start items-center py-2"
         onPointerDown={(e) => {
-          onActivate?.();
           dragControls.start(e);
         }}
       >

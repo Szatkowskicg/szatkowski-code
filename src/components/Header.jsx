@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { logo } from "../assets";
 import { navigation } from "../constants";
 import { HamburgerMenu } from "./design/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
 import MenuSvg from "../assets/svg/MenuSvg";
 import { motion, useSpring, useScroll, useTransform } from "motion/react";
@@ -11,23 +11,39 @@ const Header = () => {
   const { pathname } = useLocation();
   const [openNavigation, setOpenNavigation] = useState(false);
   const { scrollY } = useScroll();
-  const isDesktop = window.innerWidth >= 1024;
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const smoothScrollY = useSpring(scrollY, {
     stiffness: 200,
     damping: 25,
     mass: 0.5,
   });
-  const width = useTransform(smoothScrollY, [0, 250], ["100%", "60%"]);
+
+  // Animations for desktop
+  const width = useTransform(smoothScrollY, [0, 250], ["100%", "70%"]);
+  const width2xl = useTransform(smoothScrollY, [0, 250], ["100%", "60%"]);
+  const getWidth = () => {
+    if (!isDesktop) return "100%";
+    if (window.innerWidth >= 1536) return width2xl;
+    return width;
+  };
   const backgroundColor = useTransform(
     scrollY,
-    [0, 100],
-    ["rgba(255,255,255,0)", "rgba(255,255,255,0.04)"]
+    [250, 300],
+    isDesktop
+      ? ["rgba(255,255,255,0)", "rgba(255,255,255,0.04)"]
+      : ["#0D1117", "#0D1117"]
   );
   const backdropFilter = useTransform(
     scrollY,
     [0, 200],
-    ["blur(0px)", "blur(20px)"]
+    isDesktop ? ["blur(0px)", "blur(20px)"] : ["blur(0px)", "blur(0px)"]
   );
 
   const toggleNav = () => {
@@ -49,11 +65,11 @@ const Header = () => {
   return (
     <motion.div
       style={{
-        width,
-        backgroundColor,
-        backdropFilter,
+        width: getWidth(),
+        backgroundColor: isDesktop ? backgroundColor : "#0D1117",
+        backdropFilter: isDesktop ? backdropFilter : "none",
       }}
-      className="fixed left-1/2 -translate-x-1/2 top-3 lg:top-10 z-50 flex items-center justify-between px-6 lg:px-10 xl:px-16 h-[4.75rem] rounded-2xl"
+      className="fixed left-1/2 -translate-x-1/2 lg:top-10 z-50 flex items-center justify-between px-6 lg:px-10 xl:px-16 h-[4.75rem] lg:rounded-full max-w-full"
     >
       {/* Logo */}
       <motion.div
@@ -67,13 +83,13 @@ const Header = () => {
         </Link>
       </motion.div>
 
-      {/* Nawigacja */}
+      {/* Navigation */}
       <nav
         className={`${
           openNavigation ? "flex" : "hidden"
         } fixed top-[5rem] left-0 right-0 bottom-0 bg-n-8 lg:static lg:flex lg:ml-auto lg:bg-transparent`}
       >
-        <div className="relative z-2 flex flex-col items-center justify-center m-auto lg:flex-row lg:space-x-20 xl:space-x-32 px-8">
+        <div className="relative z-2 flex flex-col items-center justify-center m-auto lg:flex-row lg:space-x-20 xl:space-x-20 2xl:space-x-32 px-8">
           {navigation.map((item) => (
             <Link
               key={item.id}

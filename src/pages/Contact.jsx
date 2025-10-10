@@ -1,10 +1,9 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import ContactTerminal from "../components/ContactTerminal";
 import TerminalWindow from "../components/TerminalWindow";
 import { TerminalBoot, TerminalLogo } from "../components/design/Terminals";
 
 const Contact = () => {
-  const containerRef = useRef(null);
   const [showContactForm, setShowContactForm] = useState(false);
 
   const openContactForm = () => setShowContactForm(true);
@@ -14,14 +13,11 @@ const Contact = () => {
 
   return (
     <div className="relative w-full h-screen md:h-[100dvh] pt-[5.5rem] md:pt-[7.25rem] overflow-hidden">
-      <div
-        ref={containerRef}
-        className="h-full w-full flex flex-row gap-10 px-24 py-12"
-      >
+      <div className="h-full w-full flex flex-row gap-10 px-24 py-12 max-lg:hidden">
         <TerminalWindow
           id="contact"
           title="contact"
-          className={"w-2/3 h-full"}
+          className={"w-full xl:w-2/3 h-full"}
           delay={0.2}
         >
           <ContactTerminal
@@ -30,7 +26,7 @@ const Contact = () => {
           />
         </TerminalWindow>
 
-        <div className="flex flex-col w-1/3 h-full gap-10">
+        <div className="flex flex-col w-1/3 h-full gap-10 max-xl:hidden">
           <TerminalWindow
             id="takeover"
             title="takeover"

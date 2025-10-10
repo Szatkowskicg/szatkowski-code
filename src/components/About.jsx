@@ -19,8 +19,8 @@ const About = () => {
             <h5 className="h5 font-medium">{aboutMe.role}</h5>
           </div>
 
-          <div className="lg:pl-[8rem] space-y-8">
-            <h2 className="h2">{aboutMe.intro}</h2>
+          <div className="lg:pl-[8rem] space-y-2 lg:space-y-8">
+            <h2 className="h6 lg:h2">{aboutMe.intro}</h2>
             {aboutMe.paragraphs.map((p, i) => (
               <p key={i} className="h6">
                 {p}
@@ -32,25 +32,28 @@ const About = () => {
         {/* Second section - Build modern web */}
         <Reveal>
           <GradientDiv fade="bottom" gradient="br">
-            <div className="flex">
-              <div className="w-2/3 space-y-8">
-                <h2 className="h2 pb-8">{buildModernWeb.title}</h2>
-                <div className="px-8 space-y-8 body-1">
+            <div className="flex flex-col lg:flex-row">
+              <div className="w-full space-y-4 lg:w-2/3 lg:space-y-8">
+                <h2 className="h2 pb-2 lg:pb-8">{buildModernWeb.title}</h2>
+                <div className="space-y-4 lg:px-8 lg:space-y-8 body-1">
                   {buildModernWeb.points.map((point, i) => (
-                    <div key={i} className="flex items-center space-x-8">
-                      <CircleCheckBig className="w-6 h-6 text-color-2 shrink-0" />
+                    <div
+                      key={i}
+                      className="flex items-center space-x-4 lg:space-x-8"
+                    >
+                      <CircleCheckBig className="w-4 h-4 lg:w-6 lg:h-6 text-color-2 shrink-0" />
                       <p>{point}</p>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="w-1/3"></div>
+              <div className="w-full lg:w-1/3"></div>
             </div>
           </GradientDiv>
         </Reveal>
 
         {/* Third section - Skills */}
-        <Reveal className="flex justify-between">
+        <Reveal className="flex flex-wrap justify-between items-center">
           {skills.map((skill) => (
             <Card
               key={skill.title}

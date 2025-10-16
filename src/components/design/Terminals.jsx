@@ -71,7 +71,7 @@ export const TerminalBoot = ({ speed = 150 }) => {
 
 export const TerminalLogo = () => {
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full h-full relative bg-[#161B22]/90">
       <img
         src={bgImg}
         alt="Opis zdjęcia"

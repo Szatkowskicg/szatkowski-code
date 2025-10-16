@@ -2,6 +2,7 @@ import { useState } from "react";
 import ContactTerminal from "../components/ContactTerminal";
 import TerminalWindow from "../components/TerminalWindow";
 import { TerminalBoot, TerminalLogo } from "../components/design/Terminals";
+import { Skull, SkullBackground } from "../components/design/Skull";
 
 const Contact = () => {
   const [showContactForm, setShowContactForm] = useState(false);
@@ -30,7 +31,7 @@ const Contact = () => {
           <TerminalWindow
             id="takeover"
             title="takeover"
-            className={"w-full h-1/2"}
+            className={"w-full h-1/2 relative"}
             delay={0.3}
           >
             <TerminalLogo />
@@ -54,7 +55,8 @@ const Contact = () => {
             className={"w-3/4 h-3/4"}
             delay={0.1}
           >
-            <div className="w-full h-full bg-black text-white flex flex-col items-center justify-center">
+            <div className="relative w-full h-full bg-black text-white flex flex-col items-center justify-center">
+              <SkullBackground />
               <p className="text-lg mb-6">
                 [ tu wstawisz swój formularz kontaktowy ]
               </p>

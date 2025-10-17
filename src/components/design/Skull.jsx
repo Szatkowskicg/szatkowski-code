@@ -5,10 +5,10 @@ import skullBottom from "../../assets/images/skull_bottom.png";
 export function Skull({ className = "" }) {
   return (
     <div
-      className={`relative w-[40px] h-[50px] md:w-[50px] md:h-[65px] lg:w-[75px] lg:h-[95px]
+      className={`relative w-[50px] h-[65px] lg:w-[75px] lg:h-[95px]
         ${className}`}
     >
-      {/* Dolna szczęka */}
+      {/* Bottom skull */}
       <motion.img
         src={skullBottom}
         alt="Skull Bottom"
@@ -23,7 +23,7 @@ export function Skull({ className = "" }) {
         }}
       />
 
-      {/* Górna część czaszki */}
+      {/* Top skull */}
       <motion.img
         src={skullTop}
         alt="Skull Top"
@@ -42,9 +42,9 @@ export function Skull({ className = "" }) {
 }
 
 export function SkullBackground({
-  rows = 3,
-  columns = 3,
-  speed = 20,
+  rows = 4,
+  columns = 5,
+  speed = 40,
   className = "",
 }) {
   const skulls = [];
@@ -72,7 +72,6 @@ export function SkullBackground({
           ease: "linear",
         }}
       >
-        {/* Duplikujemy warstwę, żeby przewijanie było płynne */}
         {[0, 1].map((n) => (
           <div
             key={n}
@@ -86,7 +85,7 @@ export function SkullBackground({
                 style={{
                   top: `${skull.top}%`,
                   left: `${skull.left}%`,
-                  transform: "translate(-50%, -50%)",
+                  transform: "translate(-50%, 50%)",
                   opacity: 0.7,
                 }}
               >

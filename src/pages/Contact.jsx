@@ -1,8 +1,12 @@
 import { useState } from "react";
 import ContactTerminal from "../components/ContactTerminal";
 import TerminalWindow from "../components/TerminalWindow";
-import { TerminalBoot, TerminalLogo } from "../components/design/Terminals";
-import { Skull, SkullBackground } from "../components/design/Skull";
+import {
+  TerminalBoot,
+  TerminalContactFrom,
+  TerminalLogo,
+} from "../components/design/Terminals";
+import { SkullBackground } from "../components/design/Skull";
 
 const Contact = () => {
   const [showContactForm, setShowContactForm] = useState(false);
@@ -14,6 +18,7 @@ const Contact = () => {
 
   return (
     <div className="relative w-full h-screen md:h-[100dvh] pt-[5.5rem] md:pt-[7.25rem] overflow-hidden">
+      {/* --- Desktop view --- */}
       <div className="h-full w-full flex flex-row gap-10 px-24 py-12 max-lg:hidden">
         <TerminalWindow
           id="contact"
@@ -46,38 +51,37 @@ const Contact = () => {
             <TerminalBoot />
           </TerminalWindow>
         </div>
+
+        {/* Modal with contact form */}
+        {showContactForm && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-20">
+            <TerminalWindow
+              title={"contact-form"}
+              className={"w-3/4 h-3/4"}
+              delay={0.1}
+            >
+              <div className="relative w-full h-full bg-black text-white flex flex-col items-center justify-center">
+                <SkullBackground />
+                <TerminalContactFrom />
+              </div>
+            </TerminalWindow>
+          </div>
+        )}
       </div>
 
-      {showContactForm && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-10">
-          <TerminalWindow
-            title={"Contact Form"}
-            className={"w-3/4 h-3/4"}
-            delay={0.1}
-          >
-            <div className="relative w-full h-full bg-black text-white flex flex-col items-center justify-center">
-              <SkullBackground />
-              <p className="text-lg mb-6">
-                [ tu wstawisz swój formularz kontaktowy ]
-              </p>
-              <div className="flex gap-4">
-                <button
-                  onClick={() => closeContactForm()}
-                  className="px-4 py-2 bg-green-600 text-white rounded"
-                >
-                  Send
-                </button>
-                <button
-                  onClick={() => closeContactForm()}
-                  className="px-4 py-2 bg-red-600 text-white rounded"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </TerminalWindow>
-        </div>
-      )}
+      {/* --- Mobile view --- */}
+      <div className="h-full w-full px-5 py-4 lg:hidden">
+        <TerminalWindow
+          title={"contact-form"}
+          className={"w-full h-full"}
+          delay={0.1}
+        >
+          <div className="relative w-full h-full bg-black text-white flex flex-col items-center justify-center">
+            <SkullBackground rows={8} columns={3} />
+            <TerminalContactFrom />
+          </div>
+        </TerminalWindow>
+      </div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import bgImg from "../../assets/images/terminal_bg.png";
 import logo from "../../assets/images/szatkowski_logo.png";
 import GlitchImage from "../GlitchImage";
+import Button from "../Button";
 
 export const TerminalBoot = ({ speed = 150 }) => {
   const [visibleLines, setVisibleLines] = useState([]);
@@ -81,7 +82,7 @@ export const TerminalLogo = () => {
       <div className="relative z-10 flex flex-col items-center justify-center h-full gap-4">
         <GlitchImage src={logo} alt="Logo" className="h-auto w-[30%]" />
 
-        <div className="flex items-center text-white text-lg font-mono">
+        <div className="flex items-center text-white text-lg font-orbitron">
           <span>Connecting</span>
 
           <div className="flex ml-4 space-x-2">
@@ -101,6 +102,81 @@ export const TerminalLogo = () => {
           </div>
         </div>
       </div>
+    </div>
+  );
+};
+
+export const TerminalContactFrom = () => {
+  return (
+    <div className="w-full h-full flex flex-col items-center justify-center bg-[#161B22]/90 text-white px-4 z-1">
+      {/* Header */}
+      <motion.h2
+        className="text-4xl md:text-5xl font-extrabold mb-10 font-orbitron"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Get in Touch
+      </motion.h2>
+
+      {/* Form */}
+      <form className="w-full max-w-2xl flex flex-col space-y-6">
+        {/* Imię i nazwisko */}
+        <div className="flex flex-col md:flex-row md:space-x-6 space-y-4 md:space-y-0">
+          <div className="flex-1">
+            <label className="block mb-1 text-sm text-gray-300">
+              First Name:
+            </label>
+            <input
+              type="text"
+              className="w-full bg-transparent border border-gray-400 focus:border-green-400 outline-none px-3 py-2 rounded-md transition-all"
+            />
+          </div>
+          <div className="flex-1">
+            <label className="block mb-1 text-sm text-gray-300">
+              Last Name:
+            </label>
+            <input
+              type="text"
+              className="w-full bg-transparent border border-gray-400 focus:border-green-400 outline-none px-3 py-2 rounded-md transition-all"
+            />
+          </div>
+        </div>
+
+        {/* Email i telefon */}
+        <div className="flex flex-col md:flex-row md:space-x-6 space-y-4 md:space-y-0">
+          <div className="flex-1">
+            <label className="block mb-1 text-sm text-gray-300">Email:</label>
+            <input
+              type="email"
+              className="w-full bg-transparent border border-gray-400 focus:border-green-400 outline-none px-3 py-2 rounded-md transition-all"
+            />
+          </div>
+          <div className="flex-1">
+            <label className="block mb-1 text-sm text-gray-300">
+              Phone number:
+            </label>
+            <input
+              type="tel"
+              className="w-full bg-transparent border border-gray-400 focus:border-green-400 outline-none px-3 py-2 rounded-md transition-all"
+            />
+          </div>
+        </div>
+
+        {/* Wiadomość */}
+        <div>
+          <label className="block mb-1 text-sm text-gray-300">Message:</label>
+          <textarea
+            rows="5"
+            className="w-full bg-transparent border border-gray-400 focus:border-green-400 outline-none px-3 py-2 rounded-md resize-none transition-all"
+          ></textarea>
+        </div>
+
+        {/* Przycisk */}
+        <div className="flex justify-center pt-4">
+          <Button>Sent</Button>
+        </div>
+      </form>
     </div>
   );
 };

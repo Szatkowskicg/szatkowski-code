@@ -5,10 +5,10 @@ export const InterfacesBlock = () => {
     <motion.div
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, delay: 1.2 }}
+      transition={{ duration: 0.8 }}
       exit={{
         opacity: 0,
-        x: 50,
+        x: 30,
         transition: { ease: "easeIn", duration: 0.3 },
       }}
       className="flex items-start space-x-4 max-w-lg"

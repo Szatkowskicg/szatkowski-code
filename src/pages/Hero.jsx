@@ -1,80 +1,87 @@
-import Button from "../components/Button";
-import { Link } from "react-router-dom";
 import { motion } from "motion/react";
+import heroImage from "../assets/images/hero_pic.png";
+import Button from "../components/Button";
+import PortfolioPrev from "../components/PortfolioPrev";
+import InterfacesBlock from "../components/PortfolioInterfaces";
+import SocialsHero from "../components/SocialsHero";
+import GlitchImage from "../components/GlitchImage";
 
 const Hero = () => {
-  return (
-    <div className="flex flex-col space-y-6 justify-center items-center h-screen -mt-[5rem]">
-      <div className="container">
-        <motion.div
-          variants={{
-            hidden: {
-              opacity: 0,
-              scale: 1,
-              y: -70,
-            },
-            visible: {
-              opacity: 1,
-              scale: 1,
-              y: 0,
-            },
-          }}
-          initial="hidden"
-          animate="visible"
-          transition={{
-            ease: "easeOut",
-            duration: 0.25,
-            delay: 0.25,
-          }}
-          exit={{
-            opacity: 0,
-            x: -30,
-            transition: { ease: "easeIn", duration: 0.3 },
-          }}
-        >
-          <h1 className="h1 font-black text-center">
-            Cześć, jestem Paweł. <br />
-            Front-end developer.
-          </h1>
-          <h5 className="h5 text-center">
-            Projektowanie to dla mnie sztuka łączenia estetyki, funkcjonalności
-            i potrzeb użytkownika.
-          </h5>
-        </motion.div>
+  const gradient =
+    "linear-gradient(to bottom right, rgba(168, 85, 247, 0.1) 0%, rgba(255,255,255,0) 80%)";
 
+  return (
+    <section className="relative w-full h-screen md:h-[100dvh] flex items-center justify-center overflow-hidden">
+      {/* Background gradient */}
+      <motion.div
+        initial={{ opacity: 0, x: -50, y: -50 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
+        transition={{ duration: 0.8 }}
+        exit={{
+          opacity: 0,
+          x: -30,
+          y: -30,
+          transition: { ease: "easeIn", duration: 0.3 },
+        }}
+        className="absolute inset-0 -m-10"
+        style={{ background: gradient }}
+      />
+
+      {/* Background Blob */}
+      {/* <div className="absolute w-[400px] h-[400px] bg-purple-700/30 rounded-full -right-32 -top-32 blur-3xl animate-blob"></div> */}
+
+      {/* Text Content */}
+      <div className="relative container mx-auto px-6 items-center justify-between">
         <motion.div
-          className="flex justify-center pt-10"
-          variants={{
-            hidden: {
-              opacity: 0,
-              scale: 1,
-              y: -70,
-            },
-            visible: {
-              opacity: 1,
-              scale: 1,
-              y: 0,
-            },
-          }}
-          initial="hidden"
-          animate="visible"
-          transition={{
-            ease: "easeOut",
-            duration: 0.25,
-            delay: 0.75,
-          }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
           exit={{
             opacity: 0,
             x: -30,
             transition: { ease: "easeIn", duration: 0.3 },
           }}
+          className="text-white max-w-xl"
         >
-          <Link to={{ pathname: "/about" }}>
-            <Button className={"text-xl"}>Przejdź dalej</Button>
-          </Link>
+          <h1 className="font-orbitron text-4xl md:text-6xl font-bold mb-4">
+            I'M PAWEL
+          </h1>
+          <p className="font-orbitron text-lg md:text-2xl mb-6">
+            Full-stack developer
+          </p>
+          <Button className={"text-xl"}>See More</Button>
         </motion.div>
       </div>
-    </div>
+
+      {/* Hero Image */}
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{
+          opacity: 0,
+          x: 30,
+          transition: { ease: "easeIn", duration: 0.3 },
+        }}
+        transition={{ duration: 0.8 }}
+        className="absolute left-1/2 -translate-x-1/2 bottom-0 md:ml-[-100px] lg:ml-[-125px] xl:ml-[-150px] 2xl:ml-[-160px]"
+      >
+        <GlitchImage
+          src={heroImage}
+          alt="Hero"
+          className="w-full md:w-[200px] lg:w-[250px] xl:w-[300px] 2xl:w-[320px]"
+        />
+      </motion.div>
+
+      {/* Portfolio preview */}
+      <div className="absolute right-32 bottom-32 space-y-20 max-md:hidden z-10">
+        <PortfolioPrev />
+        <InterfacesBlock />
+      </div>
+
+      <div className="absolute bottom-12 left-16">
+        <SocialsHero />
+      </div>
+    </section>
   );
 };
 

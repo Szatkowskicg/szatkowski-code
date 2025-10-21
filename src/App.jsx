@@ -1,6 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "motion/react";
-import Hero from "./components/Hero";
+import Hero from "./pages/Hero";
 import About from "./components/About";
 import Header from "./components/Header";
 import Portfolio from "./components/Portfolio";

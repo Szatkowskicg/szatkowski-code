@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   motion,
   useMotionValue,
@@ -16,8 +16,6 @@ export default function CustomCursor() {
 
   const circleX = useSpring(dotX, { stiffness: 1500, damping: 90, mass: 0.5 });
   const circleY = useSpring(dotY, { stiffness: 1500, damping: 90, mass: 0.5 });
-
-  const hideTimeoutRef = useRef(null);
 
   // Disable cursor on touch devices
   function useIsTouchDevice() {
@@ -38,22 +36,13 @@ export default function CustomCursor() {
   }
 
   useEffect(() => {
-    const resetHideTimeout = () => {
-      if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
-      hideTimeoutRef.current = setTimeout(() => setVisible(false), 2000);
-    };
-
     const move = (e) => {
       dotX.set(e.clientX);
       dotY.set(e.clientY);
       setVisible(true);
-      resetHideTimeout();
     };
 
-    const leave = () => {
-      setVisible(false);
-      if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
-    };
+    const leave = () => setVisible(false);
     const down = () => setClicked(true);
     const up = () => setClicked(false);
 
@@ -76,7 +65,6 @@ export default function CustomCursor() {
     window.addEventListener("mouseout", handleOut);
 
     return () => {
-      if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
       window.removeEventListener("mousemove", move);
       window.removeEventListener("mouseleave", leave);
       window.removeEventListener("mousedown", down);
@@ -105,7 +93,7 @@ export default function CustomCursor() {
               translateY: "-50%",
             }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: hovered ? 0 : 1 }}
             exit={{ opacity: 0 }}
           />
 
@@ -119,7 +107,7 @@ export default function CustomCursor() {
               translateY: "-50%",
             }}
             animate={{
-              scale: clicked ? 1.75 : hovered ? 1.25 : 1,
+              scale: clicked ? 1.75 : hovered ? 1.5 : 1,
               opacity: visible ? 1 : 0,
               backgroundColor: hovered ? "rgba(0, 0, 0, 0.3)" : "transparent",
             }}

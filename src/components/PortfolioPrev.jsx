@@ -10,10 +10,10 @@ export const PortfolioPrev = () => {
     <motion.div
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, delay: 0.9 }}
+      transition={{ duration: 0.8 }}
       exit={{
         opacity: 0,
-        x: 50,
+        x: 30,
         transition: { ease: "easeIn", duration: 0.3 },
       }}
       className="flex w-full relative pb-12"

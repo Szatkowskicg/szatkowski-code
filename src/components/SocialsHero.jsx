@@ -11,6 +11,11 @@ const SocialsHero = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
+      exit={{
+        opacity: 0,
+        y: 30,
+        transition: { ease: "easeIn", duration: 0.3 },
+      }}
       className="flex flex-col items-start justify-center"
     >
       {/* Social links */}

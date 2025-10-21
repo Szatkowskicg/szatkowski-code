@@ -1,32 +1,31 @@
 import { motion, useDragControls } from "motion/react";
+import { useState } from "react";
 
 const TerminalWindow = ({ title, children, delay = 0, className }) => {
   const dragControls = useDragControls();
+  const [isDragging, setIsDragging] = useState(false);
 
   const classes = `flex flex-col rounded-xl mx-auto select-none overflow-hidden ${
-    className || ""
-  }`;
+    isDragging ? "z-10" : "z-0"
+  } ${className || ""}`;
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 50, scale: 0.8 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.3, delay: delay }}
-      exit={{
-        opacity: 0,
-        scale: 0.8,
-        transition: { ease: "easeIn", duration: 0.2 },
-      }}
       drag
       dragListener={false}
       dragControls={dragControls}
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-      dragElastic={0.15}
+      dragElastic={0.2}
       dragTransition={{
         bounceStiffness: 300,
         bounceDamping: 25,
       }}
       dragMomentum={false}
+      onDragStart={() => setIsDragging(true)}
+      onDragEnd={() => setIsDragging(false)}
       className={classes}
     >
       {/* Header / Drag handle */}

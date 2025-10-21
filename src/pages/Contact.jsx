@@ -7,6 +7,7 @@ import {
   TerminalLogo,
 } from "../components/design/Terminals";
 import { SkullBackground } from "../components/design/Skull";
+import Reveal from "../components/Reveal";
 
 const Contact = () => {
   const [showContactForm, setShowContactForm] = useState(false);
@@ -19,7 +20,7 @@ const Contact = () => {
   return (
     <div className="relative w-full h-screen md:h-[100dvh] pt-[5.5rem] md:pt-[7.25rem] overflow-hidden">
       {/* --- Desktop view --- */}
-      <div className="h-full w-full flex flex-row gap-10 px-24 py-12 max-lg:hidden">
+      <Reveal className="h-full w-full flex flex-row gap-10 px-24 py-12 max-lg:hidden">
         <TerminalWindow
           id="contact"
           title="contact"
@@ -55,33 +56,29 @@ const Contact = () => {
         {/* Modal with contact form */}
         {showContactForm && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-20">
-            <TerminalWindow
-              title={"contact-form"}
-              className={"w-3/4 h-3/4"}
-              delay={0.1}
-            >
+            <TerminalWindow title={"contact-form"} className={"w-3/4 h-3/4"}>
               <div className="relative w-full h-full bg-black text-white flex flex-col items-center justify-center">
                 <SkullBackground />
-                <TerminalContactFrom />
+                <TerminalContactFrom onClose={closeContactForm} />
               </div>
             </TerminalWindow>
           </div>
         )}
-      </div>
+      </Reveal>
 
       {/* --- Mobile view --- */}
-      <div className="h-full w-full px-5 py-4 lg:hidden">
+      <Reveal className="h-full w-full px-5 py-4 lg:hidden">
         <TerminalWindow
           title={"contact-form"}
           className={"w-full h-full"}
-          delay={0.1}
+          delay={0.3}
         >
           <div className="relative w-full h-full bg-black text-white flex flex-col items-center justify-center">
             <SkullBackground rows={8} columns={3} />
             <TerminalContactFrom />
           </div>
         </TerminalWindow>
-      </div>
+      </Reveal>
     </div>
   );
 };

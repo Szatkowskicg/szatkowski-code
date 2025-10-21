@@ -42,39 +42,41 @@ const Portfolio = () => {
   };
 
   return (
-    <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden -mt-[5rem]">
-      <div className="relative w-full h-full flex items-center justify-center">
-        {renderProject()}
-      </div>
-
-      <div className="absolute bottom-10 flex gap-8 md:gap-24">
-        <BackButton className={"text-lg"} onClick={handlePrev}>
-          Prev
-        </BackButton>
-
-        <div className="flex items-center gap-4">
-          {[0, 1, 2].map((_, index) => (
-            <motion.div
-              key={index}
-              className={`w-2 h-2 rounded-full ${
-                currentIndex === index ? "bg-neutral-300" : "bg-neutral-500"
-              }`}
-              animate={{
-                scale: currentIndex === index ? 1.5 : 1,
-                opacity: currentIndex === index ? 1 : 0.5,
-              }}
-              transition={{
-                duration: 0.3,
-              }}
-            />
-          ))}
+    <div className="relative w-full h-screen md:h-[100dvh] pt-[5.5rem] md:pt-[7.25rem] overflow-hidden">
+      <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden -mt-[5rem]">
+        <div className="relative w-full h-full flex items-center justify-center">
+          {renderProject()}
         </div>
 
-        <NextButton className={"text-lg"} onClick={handleNext}>
-          Next
-        </NextButton>
-      </div>
-    </section>
+        <div className="absolute bottom-10 flex gap-8 md:gap-24">
+          <BackButton className={"text-lg"} onClick={handlePrev}>
+            Prev
+          </BackButton>
+
+          <div className="flex items-center gap-4">
+            {[0, 1, 2].map((_, index) => (
+              <motion.div
+                key={index}
+                className={`w-2 h-2 rounded-full ${
+                  currentIndex === index ? "bg-neutral-300" : "bg-neutral-500"
+                }`}
+                animate={{
+                  scale: currentIndex === index ? 1.5 : 1,
+                  opacity: currentIndex === index ? 1 : 0.5,
+                }}
+                transition={{
+                  duration: 0.3,
+                }}
+              />
+            ))}
+          </div>
+
+          <NextButton className={"text-lg"} onClick={handleNext}>
+            Next
+          </NextButton>
+        </div>
+      </section>
+    </div>
   );
 };
 

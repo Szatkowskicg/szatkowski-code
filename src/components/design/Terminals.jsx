@@ -106,7 +106,7 @@ export const TerminalLogo = () => {
   );
 };
 
-export const TerminalContactFrom = () => {
+export const TerminalContactFrom = ({ onClose }) => {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center bg-[#161B22]/90 text-white px-4 z-1">
       {/* Header */}
@@ -121,7 +121,7 @@ export const TerminalContactFrom = () => {
 
       {/* Form */}
       <form className="w-full max-w-2xl flex flex-col space-y-6">
-        {/* Imię i nazwisko */}
+        {/* Name */}
         <div className="flex flex-col md:flex-row md:space-x-6 space-y-4 md:space-y-0">
           <div className="flex-1">
             <label className="block mb-1 text-sm text-gray-300">
@@ -143,7 +143,7 @@ export const TerminalContactFrom = () => {
           </div>
         </div>
 
-        {/* Email i telefon */}
+        {/* Email & phone */}
         <div className="flex flex-col md:flex-row md:space-x-6 space-y-4 md:space-y-0">
           <div className="flex-1">
             <label className="block mb-1 text-sm text-gray-300">Email:</label>
@@ -163,7 +163,7 @@ export const TerminalContactFrom = () => {
           </div>
         </div>
 
-        {/* Wiadomość */}
+        {/* Message */}
         <div>
           <label className="block mb-1 text-sm text-gray-300">Message:</label>
           <textarea
@@ -172,9 +172,10 @@ export const TerminalContactFrom = () => {
           ></textarea>
         </div>
 
-        {/* Przycisk */}
+        {/* Buttons */}
         <div className="flex justify-center pt-4">
           <Button>Sent</Button>
+          {onClose && <Button onClick={onClose}>Cancel</Button>}
         </div>
       </form>
     </div>

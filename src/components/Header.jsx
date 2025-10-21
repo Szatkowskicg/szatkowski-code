@@ -35,10 +35,10 @@ const Header = () => {
   };
   const backgroundColor = useTransform(
     scrollY,
-    [250, 300],
+    isDesktop ? [250, 300] : [50, 100],
     isDesktop
       ? ["rgba(255,255,255,0)", "rgba(255,255,255,0.04)"]
-      : ["#0D1117", "#0D1117"]
+      : ["rgba(13, 17, 23, 0)", "rgba(13, 17, 23, 1)"]
   );
   const backdropFilter = useTransform(
     scrollY,
@@ -66,10 +66,10 @@ const Header = () => {
     <motion.div
       style={{
         width: getWidth(),
-        backgroundColor: isDesktop ? backgroundColor : "#0D1117",
+        backgroundColor: backgroundColor,
         backdropFilter: isDesktop ? backdropFilter : "none",
       }}
-      className="fixed left-1/2 -translate-x-1/2 lg:top-10 z-50 flex items-center justify-between px-6 lg:px-10 xl:px-16 h-[4.75rem] lg:rounded-full max-w-full"
+      className="fixed left-1/2 -translate-x-1/2 lg:top-10 z-[999] flex items-center justify-between px-6 lg:px-10 xl:px-16 h-[4.75rem] lg:rounded-full max-w-full"
     >
       {/* Logo */}
       <motion.div
@@ -89,7 +89,7 @@ const Header = () => {
           openNavigation ? "flex" : "hidden"
         } fixed top-[5rem] left-0 right-0 bottom-0 bg-n-8 lg:static lg:flex lg:ml-auto lg:bg-transparent`}
       >
-        <div className="relative z-2 flex flex-col items-center justify-center m-auto lg:flex-row lg:space-x-20 xl:space-x-20 2xl:space-x-32 px-8">
+        <div className="relative z-[998] flex flex-col items-center justify-center m-auto lg:flex-row lg:space-x-20 xl:space-x-20 2xl:space-x-32 px-8">
           {navigation.map((item) => (
             <Link
               key={item.id}

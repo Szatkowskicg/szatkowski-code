@@ -1,7 +1,6 @@
 import { motion } from "motion/react";
 import PortfolioStripes from "../assets/portfolio_prev_stripes.svg";
 import AnyfabPic from "../assets/images/Anyfab.png";
-import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export const PortfolioPrev = () => {

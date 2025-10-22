@@ -25,7 +25,6 @@ const Contact = () => {
           id="contact"
           title="contact"
           className={"w-full xl:w-2/3 h-full"}
-          delay={0.2}
         >
           <ContactTerminal
             onOpenContact={openContactForm}

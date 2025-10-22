@@ -3,9 +3,9 @@ import { AnimatePresence } from "motion/react";
 import Hero from "./pages/Hero";
 import About from "./components/About";
 import Header from "./components/Header";
-import Portfolio from "./components/Portfolio";
 import CustomCursor from "./components/CustomCursor";
 import Contact from "./pages/Contact";
+import Portfolio from "./pages/Portfolio";
 
 const AnimatedRoutes = () => {
   const location = useLocation();

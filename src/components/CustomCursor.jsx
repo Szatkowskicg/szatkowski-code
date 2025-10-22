@@ -109,7 +109,9 @@ export default function CustomCursor() {
             animate={{
               scale: clicked ? 1.75 : hovered ? 1.5 : 1,
               opacity: visible ? 1 : 0,
-              backgroundColor: hovered ? "rgba(0, 0, 0, 0.3)" : "transparent",
+              backgroundColor: hovered
+                ? "rgba(0, 0, 0, 0.4)"
+                : "rgba(0, 0, 0, 0)",
             }}
             transition={{
               type: "spring",

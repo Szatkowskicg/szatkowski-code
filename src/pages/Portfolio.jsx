@@ -1,41 +1,44 @@
 import { useEffect, useState } from "react";
-import Project1 from "../pages/Projects/Project1";
 import { AnimatePresence, motion } from "framer-motion";
-import BackButton from "./BackButton";
-import NextButton from "./NextButton";
-import Project2 from "../pages/Projects/Project2";
-import Project3 from "../pages/Projects/Project3";
-import Reveal from "./Reveal";
+import BackButton from "../components/BackButton";
+import NextButton from "../components/NextButton";
+import { Project1, Project2, Project3 } from "../components/design/Projects";
+import Reveal from "../components/Reveal";
 
 export const Portfolio = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-  const [isFirstEnter, setIsFirstEnter] = useState(true);
+  const [threshold, setThreshold] = useState(window.innerWidth * 0.25);
 
   useEffect(() => {
-    const saved = localStorage.getItem("portfolioIndex");
-    if (saved) setCurrentIndex(Number(saved));
+    let resizeTimeout;
+
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        setThreshold(window.innerWidth * 0.25);
+      }, 150);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      clearTimeout(resizeTimeout);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem("portfolioIndex", currentIndex);
-  }, [currentIndex]);
 
   const handleNext = () => {
     setDirection(1);
-    setIsFirstEnter(false);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % 3);
   };
 
   const handlePrev = () => {
     setDirection(-1);
-    setIsFirstEnter(false);
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? 2 : prevIndex - 1));
   };
 
   const handleDragEnd = (event, info) => {
-    if (info.offset.x < -300) handleNext();
-    else if (info.offset.x > 300) handlePrev();
+    if (info.offset.x < -threshold) handleNext();
+    else if (info.offset.x > threshold) handlePrev();
   };
 
   const projects = [
@@ -46,30 +49,30 @@ export const Portfolio = () => {
 
   const variants = {
     enter: (dir) => ({
-      x: dir === 0 ? 0 : dir > 0 ? 300 : -300,
+      x: dir === 0 ? 0 : dir > 0 ? threshold : -threshold,
       opacity: 0,
     }),
     center: {
       x: 0,
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.4, ease: "easeOut" },
+      transition: { duration: 0.3, ease: "easeOut" },
     },
     exit: (dir) => ({
-      x: dir > 0 ? -300 : 300,
+      x: dir > 0 ? -threshold : threshold,
       opacity: 0,
-      scale: 0.95,
+      scale: 0.8,
       transition: { duration: 0.3, ease: "easeIn" },
     }),
   };
 
   return (
     <div className="relative w-full h-screen md:h-[100dvh] pt-[5.5rem] md:pt-[7.25rem] overflow-hidden">
-      <Reveal className="relative w-full h-full flex items-center justify-center">
+      <Reveal className="w-full h-full pb-20 lg:pb-28">
         <AnimatePresence custom={direction} mode="wait">
           <motion.div
             key={currentIndex}
-            className="absolute w-full h-full"
+            className="w-full h-full"
             custom={direction}
             variants={variants}
             initial="enter"
@@ -85,7 +88,7 @@ export const Portfolio = () => {
         </AnimatePresence>
 
         {/* Portfolio nav */}
-        <div className="absolute bottom-10 w-full flex justify-center gap-8 md:gap-24">
+        <div className="absolute bottom-6 lg:bottom-12 w-full flex justify-center gap-8 md:gap-24">
           <BackButton className={"text-lg"} onClick={handlePrev}>
             Prev
           </BackButton>

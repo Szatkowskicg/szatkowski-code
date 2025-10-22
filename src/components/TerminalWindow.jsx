@@ -11,7 +11,11 @@ const TerminalWindow = ({ title, children, delay = 0, className }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50, scale: 0.8 }}
+      initial={{
+        opacity: delay ? 0 : 1,
+        y: delay ? 50 : 0,
+        scale: delay ? 0.8 : 1,
+      }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.3, delay: delay }}
       drag

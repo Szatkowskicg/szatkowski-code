@@ -35,7 +35,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           exit={{
             opacity: 0,
             x: -30,
@@ -55,14 +55,14 @@ const Hero = () => {
 
       {/* Hero Image */}
       <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
         exit={{
           opacity: 0,
-          x: 30,
+          y: 30,
           transition: { ease: "easeIn", duration: 0.3 },
         }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.6 }}
         className="absolute left-1/2 -translate-x-1/2 bottom-0 md:ml-[-100px] lg:ml-[-125px] xl:ml-[-150px] 2xl:ml-[-160px]"
       >
         <GlitchImage

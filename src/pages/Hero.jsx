@@ -5,6 +5,8 @@ import PortfolioPrev from "../components/PortfolioPrev";
 import InterfacesBlock from "../components/PortfolioInterfaces";
 import SocialsHero from "../components/SocialsHero";
 import GlitchImage from "../components/GlitchImage";
+import AnimatedDotBackground from "../components/design/AnimatedDotBackground";
+import GlitchLayers from "../components/design/GlitchLayers";
 
 const Hero = () => {
   const gradient =
@@ -26,9 +28,6 @@ const Hero = () => {
         className="absolute inset-0 -m-10"
         style={{ background: gradient }}
       />
-
-      {/* Background Blob */}
-      {/* <div className="absolute w-[400px] h-[400px] bg-purple-700/30 rounded-full -right-32 -top-32 blur-3xl animate-blob"></div> */}
 
       {/* Text Content */}
       <div className="relative container mx-auto px-6 items-center justify-between">
@@ -81,6 +80,8 @@ const Hero = () => {
       <div className="absolute bottom-12 left-16">
         <SocialsHero />
       </div>
+
+      <AnimatedDotBackground />
     </section>
   );
 };

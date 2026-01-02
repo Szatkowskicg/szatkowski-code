@@ -80,8 +80,8 @@ const Hero = () => {
       <div className="absolute bottom-12 left-16">
         <SocialsHero />
       </div>
-
-      <AnimatedDotBackground />
+      {/* 
+      <AnimatedDotBackground /> */}
     </section>
   );
 };
